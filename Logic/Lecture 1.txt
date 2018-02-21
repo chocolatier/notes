@@ -1,0 +1,20 @@
+Logic - Science of Reasoning (bad defn)
+        Argument -> Socrates (dead) is a footballer
+        All footballers are bipeds
+        ______________________________________________
+        \therefore Soc. is a biped 
+
+        Sentences/ statements - true
+                              - false 
+        
+        Argument - valid : premise true -> conditional true (impossible that the premise is true and the conclusion false)
+                 - invalid 
+
+        Valid arg:
+        Snoopy is a cat
+        All cats are reptiles
+        \therefore Snoopy is a reptile 
+
+        x is an A
+        All As are Bs 
+        \tf x is a B 

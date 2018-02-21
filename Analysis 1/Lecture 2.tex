@@ -1,0 +1,95 @@
+x \in A 
+A \cup B = \{x : x \in A or x \in B\}
+A \cap B = \{x : x \in A and x \in B\}
+A \sub B = \{x \in A : x \not\in B\}
+
+If \{A_i\}_{i\in I} I index set. 
+then \big\cup_{i \in I}A_i = {x : x belongs to atleast one A_i}
+
+\big\cap_{i \in I} A_i = {x : x belongs to every A_i}
+
+A \Subset B if x \in A \implies x \in B 
+
+If A is a set, P(A) is the collection of all subsets of A. (power set)
+
+Proposition: $$A \cup B$$ = $$B \cup A$$
+
+$$A \cap B$$ = $$B \cap A$$
+
+A \cup (B \cup C) = (A \cup B) \cup C
+
+A \cap (B \cap C) = (A \cap B) \cap C
+
+A \Subset A \cup B 
+A \Subset B iff A \cap B = A
+
+A \cap (B \cup C) = (A cap B) \cup (A \cap C)
+A \cup (B\cap C) = (A \cup B) \cap (A \cup C)
+
+A \cup (U_{i\in I} B_i) = U_{i\in I}(A \cap B_i)
+
+A\cup (\cap-{i\in I}B_i) = \cap_{i \in I}(A \cup B_i)
+
+Complements
+
+Suppose X is our universal set.
+
+If A \sub X, A^c = {x \in X : x \in A}
+
+Prop (A \cup B)^c = A^c \cap B^c 
+(A \cup  B)^c = A^c \cup B^cap
+
+(\cup_(i \in I) A_i)^c = \cap_{i \in A} A_i^c 
+
+(\cap_(i \in I) A_i)^c = \cup_{i \in A} A_i^c 
+
+Ordered pairs:
+
+A. B are sets:
+
+A \times B = {(a,b) : a \in A, b \in B}
+
+Define (a,b) = {{a}, {a,b}}
+
+$(a,b) = (c,d) \iff a = c and b = d$
+
+Functions:
+
+f : A -> B is a rule that assigns to each a \in A exactly one element f(a) in B
+
+Defn : A function f: A -> B is a subset of \tilde f: A \times B such that for each a \in A \exists ! b \in B s.t. (a,b) \in \tilde f
+
+f : A -> B 
+A is the domain
+B is the codomain
+
+f(A) = \cup _a \in A {f (a)} = {f(a) : a \in A} is the range or image
+
+f is one to one or injective if f(a) = f(b) => a = b 
+
+f is onto or surjective if for every b \in B \exists a \in A s.t. f(a) = b 
+
+If f : A -> B, S \subset A, f \big\vert_S is the restriction of f to S. 
+
+f \big\vert_S : S -> B, f \big\vert_s = f(s) \forall s \in S 
+
+If T \sub B, then f^(-1) = {a \in A : f(a) \in T} <- inverse image 
+
+f : A -> B, g : B -> C 
+
+g (f (a)) \in C 
+
+g \circ f (a) <- composition
+
+Proposition : f : A -> B 
+c, d \in A. E, F \in B
+f (c \cup D) = f(c) = f(d)
+f(c \cap d) \sub f (c) = f (d) 
+
+f^{-1} (E \cup F) = f^{-1}(E) \cup f^{-1}(F)
+f^{-1} (E \cap F) = f^{-1}(E) \cap f^{-1}(F)
+
+(f^{=1}(E))^c = f^{-1} (E^c)
+
+c \sub f^{-1}(f(c))  c \sub A_i
+E \cup f(f^-1(E)) E \sub B

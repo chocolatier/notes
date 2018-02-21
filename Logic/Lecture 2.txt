@@ -1,0 +1,41 @@
+Argument 
+    Socrates is a Footballer
+    All Footballers are bipeds
+    So Socrates is a bipeds
+
+Formulate - forms of sentences 
+
+X set of Formulate
+A formula 
+
+X \ts A (sequent)
+
+s - name (socrates) \\ 
+F predicate - (_ is a bipeds)
+
+F (s) -> Socrates is a biped
+
+G (_ is older than _) -> Predicate with two gaps
+
+G (s, p) -> Socrates is older than Plato
+
+Atoms p,q,r
+
+Connective p \and q
+possibly _
+_ although _ 
+_ unless _ 
+Trump believes that _
+
+truth-functional connectives
+    and ^
+    not \not  
+    or  \or
+    if _ then _ ->
+
+(p ^ q) ->
+p -> (q - r)
+
+((p ^ q) -> r) V (r ^ \not s) 
+
+Scope -> Connective and the thing it connects 

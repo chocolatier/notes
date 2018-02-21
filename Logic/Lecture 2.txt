@@ -39,3 +39,22 @@ p -> (q - r)
 ((p ^ q) -> r) V (r ^ \not s) 
 
 Scope -> Connective and the thing it connects 
+
+((p^q)->r) V (r ^ \not s)
+
+            ^-- Main connective 
+
+A v B <- any formula with main connective is or 
+(A -> B) v C <- 
+(A ^ D), As are the same
+
+((p^q) -> r) ^ p
+
+Substituting a formula for an atom 
+e.g. subst. s for p in ((p^q) -> r) V (r ^ \not s)
+                        ((s^q) -> r) \or (r ^ \not s)
+                        subst. s -> \not q for p 
+                        ((s -> \not q) ^ p -> r) v (r ^ \not s)
+                        subst. not r for s 
+
+                        (((\not r -> \not q)^q)->r) v (r ^ \not\not r)

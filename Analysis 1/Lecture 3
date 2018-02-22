@@ -1,0 +1,31 @@
+Equivalence Relati0on
+
+Let X be a set.
+
+AN equivalence relation of X in a subset R of X \times X
+    s.t. (1) (x,x) \in R reflexive [] x ~ x
+         (2) (x,y) \in R if (y,x) \in R [] y ~ x
+         (3) (x,y) \in R, (y,z) \in R \implies (x,z) \in R [] x ~ y, y ~ z => x ~ z
+
+For each x \in X let 
+[x] = {y \in X : y ~ x} equivalence class containing x. 
+
+If [x] \cap [\tilde x] \not\eq \phi, then [x] = [\tilde x]
+X = \big\cup_{x \in X} [x] 
+
+i.e partition the set into disjoint relations
+
+Let X, Y be sets. 
+
+Defn. We say X ~ Y if \exists a bijection (one to one and onto function) from X onto y
+Properties 
+    1) X ~ X for every set.
+    2) If X ~ Y, then Y ~ X 
+
+            If f : X -> Y is a bijection, then 
+            f ^ {-1} is also a bijection 
+
+    3) X ~ Y, Y ~ Z, then X ~ Z 
+
+    X -f-> Y -g-> Z
+    h = g \circ f is a bijection 

@@ -29,3 +29,75 @@ Properties
 
     X -f-> Y -g-> Z
     h = g \circ f is a bijection 
+
+Def A set X is finite, if it is either empty or it is equivalent {1, 2, ..., n} for some natural number N. 
+    A set is infinite if it is not fininte
+
+    E = {2n : n \in \N} = {even nautral numbers}
+    E ~ \N 
+
+2) (0,1) ~ \R 
+
+f(x) = tan (x-1/2)\pi 
+
+% Insert graph here
+
+A set is denumerable if it is equivalent to \N 
+
+A set is countable if it is either fininte or denumerable
+
+If a set is denumerable, it has cardinality d. 
+If a set is equivalent to {1, ... , n}, we say it has cardinality n. \phi has cardinality 0
+
+Thm 
+
+Any denumerable set is infinite 
+
+Proof Let X be denumerable.
+
+Suppose X is finite.
+
+{1, ... , n} \bijection X \bijection \N 
+
+{1, ... , n} \bij \N 
+
+Let f : {1, .., n} -> N
+Let M = max {f(1), ....., f(n)} \sum_j=1^n f(j)
+
+Thm: ANy subset of a countable set is countable
+
+Proof: Let A be a countable set, A \neq \phi. 
+Then there is a bijection of  {1....n} onto A or a bijection of \N onto A 
+
+Let a_i = f(1), a_2 = f(2) ....
+A = {a_1, ....., a_n} or 
+A = {a_1, a_2, ..............................}
+
+Let B \sub A, B non-empty
+Let I_1 = min {j : a_j \in B}
+a_1 = b_1
+
+i_2 = min {j, j > i_1, a,_j \in B}
+
+Either terminates or forms a list (i.e. B is denumerable)
+
+Still need to prove existence of a minimum 
+
+Thm \Q is ddenumerable.
+
+Pf: Q^+ 
+
+[Insert that grid thing]
+
+1 2 3 4 
+1/2 ...
+
+\tf Q^+ is enumerable 
+
+Q^+ = {a_1, a_2, a_3, ..........}
+
+List all rationals 
+
+0, a_1, -a_1, a_2, -a_2 
+
+Therefore is \Q ~ \N 

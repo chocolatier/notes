@@ -103,11 +103,11 @@
     \item Let $X$ be a set. Define $\succ(x) = x^{+} := x \cup \{x\}$.
     There exists a set S such that
     \begin{enumerate}
-        \item $\phi \in S$, 
+        \item $\emptyset \in S$, 
         \item $x \in S$ then $x^{+} \in S$.
         
-        E.g. $succ(\phi) = \phi \cup {\phi} = {\phi}$
-        $\{\phi\}^{+} = \{\phi\} \cup \{\{\phi\}\} = \{\phi, \{\phi\}\}$
+        E.g. $succ(\emptyset) = \emptyset \cup {\emptyset} = {\emptyset}$
+        $\{\emptyset\}^{+} = \{\emptyset\} \cup \{\{\emptyset\}\} = \{\emptyset, \{\emptyset\}\}$
     \end{enumerate}
 
     \item Axiom of choice. 
@@ -118,4 +118,72 @@
 \end{enumerate}
 
 
+\section{Construction  of $\N$}
+
+$\N$ includes 0.
+
+Define $0 := \emptyset$
+
+$1 := \emptyset^+$
+
+
+$2 := 1^+ = \{\emptyset, \{\emptyset\}\}$
+
+$3 := 2^+ = \{\emptyset, \{\emptyset\}\} \cup \{\{\emptyset, \{ \emptyset\}\}\} = \{\emptyset, \{\emptyset\},\{\emptyset, \{ \emptyset\}\}\}$
+
+Q: What is $\N$.
+
+A9 tells us that there is a set $S$ such that $\phi \in s,$ if $x \in S, x^+ \in S$
+
+Consider $I_S := \{T \in \PS (S) \vert \emptyset \in T \text{ and } \forall x \in T, x^+ \in T\}$
+
+Say that a set $A$ is inductive. If $\emptyset \in A \text{ and if} x \in A, x^+ \in A$.
+
+$I_s =$ set of all inductive subsets of S.
+
+$I_s \neq \emptyset$ because $S \in I_S$
+
+Define $\N = \cap_{x \in I_S} x = \{ x \in S \vert \forall T \in I_s, x \in T\}$
+
+\begin{theorem}{Principle of Mathematical Induction}
+
+    Let $p$ be a predicate defined on $\N$. Assume that $p(0)$ holds, and for every $n \in \N, p(n)$ implies $p (n^+)$.
+    Then $p(n)$ holds for every $n \in N$.
+    
+\end{theorem}
+
+\begin{proof}
+    Fix p, with the above properties. 
+
+    $S = \{x \in \N \vert p(x) \text{ holds}\}$.
+    We want to show that $S = N$, i.e. the elements of $S$ are exactly the elements of $\N$. 
+
+    Observation
+    S is inductive
+    \begin{enumerate}
+        \item $\emptyset \in S$, because $p(0) = p(\emptyset)$ holds. 
+        \item If $x \in S$ it means $p(x)$ holds, therefore $p(x^+)$ also holds. 
+
+        So, $x^+ \in S$  
+    \end{enumerate}
+
+    1 and 2 tell us that $S$ is inductive. 
+
+    $S \subseteq \N$ by construction. 
+
+    $N \subseteq S$ by construction. 
+
+    $\implies S = \N$
+\end{proof}
+
+\begin{theorem}
+    If $m, n \in \N$, such that $m^+ = n^+$, then $m = n$. 
+\end{theorem}
+
+\begin{proof}
+    \begin{lemma}
+        Let $x, n \in \N$.
+        If $x \in n$ then $x \subseteq n$ 
+    \end{lemma}
+\end{proof}
 \end{document}

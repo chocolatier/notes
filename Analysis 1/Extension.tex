@@ -49,78 +49,78 @@
     
     \newcommand\E{\mathbb{E}}
     
-    \begin{document}
-    \section {Set Theory}
+\begin{document}
+\section {Set Theory}
 
-    \begin{definition}{(bad)}
+\begin{definition}{(bad)}
 
-        A set is an object $S$ such that for every $x$, we have exactly one of two things.
-
-        \begin{enumerate}
-            \item $x \in S$ ($x$ belongs to $S$) or 
-            \item $x \not\in S$ ($x$ does not belong to $S$) 
-        \end{enumerate}
-    \end{definition}
-
-    Sets are specified as follows
-    \begin{enumerate}
-        \item $\{1,2,3,4\}$
-        \item $\{1,2,3,4,...\}$
-        \item $\{x \in \N \vert x \text{ is prime}\}$
-    \end{enumerate}
-
-    \subsection{Russel's Paradox}
-        Let $S$ be the following:
-
-        $S = \{T \vert T \not\in T\}$
-
-        Q: Is $S \in S?$
-
-        If yes, then by definition $S \not\in S$
-        If no, then by definition $S \in S$
-
-    \subsection{Foundations of Set Theory/Zermelo-Frankel Set Theory}
-    \subsubsection{Axioms of ZFC}
+    A set is an object $S$ such that for every $x$, we have exactly one of two things.
 
     \begin{enumerate}
-        \item Axiom of Extension: 
-        Two sets are equal if and only if they have the same elements. 
-
-        \item Axiom of Existence:
-        The Empty Set Exists
-
-        \item Axiom of Pairing:
-        If $X$ and $Y$ are sets, then there is a set $\{X, Y\}$
-
-        Example : $X = \{1,2\}$         $Y = \{3,4\}$
-        ${X,Y} = \{\{1,2\}, \{3,4\}\}$
-
-        $X = \emptyset$, $Y = \emptyset$
-
-        $\{X,Y\} = \{\emptyset\}$
-
-        \item Axiom of Union:        If $S$ is a (set of sets), then the union over elements of $S$ is a set. 
-
-        Example: $S = \{\{1,2\}, \{2,3\}\}$, then $\{1,2,3\}$ is a set. 
-
-        \item Axiom of Intersection: Redundant, as above. 
-
-        \item Axiom of foundation.
-
-        Every $x \neq \emptyset$ contains a member $y$ such that $x \neq y$. 
-
-        Consequence of failure:
-
-        Let $X \neq \emptyset$
-
-        $\forall y \in X, y \cap X \neq \emptyset$
-
-        Choose any $y_1 \in X$, choose $y_2 \in X \cap Y$. $y_2 \in X$, so $y_2 \cap X \neq \emptyset$. Choose $y_3 \in x \cap y_2$...
-
-        \item Axiom Schema of Replacement
-
-        If $\phi$ is a formula of 1st order logic, $A$ is any set, then $\phi$ applied to $A$ is contained in a set. 
-
+        \item $x \in S$ ($x$ belongs to $S$) or
+        \item $x \not\in S$ ($x$ does not belong to $S$)
     \end{enumerate}
-    
-    \end{document}
+\end{definition}
+
+Sets are specified as follows
+\begin{enumerate}
+    \item $\{1,2,3,4\}$
+    \item $\{1,2,3,4,...\}$
+    \item $\{x \in \N \vert x \text{ is prime}\}$
+\end{enumerate}
+
+\subsection{Russel's Paradox}
+Let $S$ be the following:
+
+$S = \{T \vert T \not\in T\}$
+
+Q: Is $S \in S?$
+
+If yes, then by definition $S \not\in S$
+If no, then by definition $S \in S$
+
+\subsection{Foundations of Set Theory/Zermelo-Frankel Set Theory}
+\subsubsection{Axioms of ZFC}
+
+\begin{enumerate}
+    \item Axiom of Extension:
+          Two sets are equal if and only if they have the same elements.
+
+    \item Axiom of Existence:
+          The Empty Set Exists
+
+    \item Axiom of Pairing:
+          If $X$ and $Y$ are sets, then there is a set $\{X, Y\}$
+
+          Example : $X = \{1,2\}$         $Y = \{3,4\}$
+          ${X,Y} = \{\{1,2\}, \{3,4\}\}$
+
+          $X = \emptyset$, $Y = \emptyset$
+
+          $\{X,Y\} = \{\emptyset\}$
+
+    \item Axiom of Union:        If $S$ is a (set of sets), then the union over elements of $S$ is a set.
+
+          Example: $S = \{\{1,2\}, \{2,3\}\}$, then $\{1,2,3\}$ is a set.
+
+    \item Axiom of Intersection: Redundant, as above.
+
+    \item Axiom of foundation.
+
+          Every $x \neq \emptyset$ contains a member $y$ such that $x \neq y$.
+
+          Consequence of failure:
+
+          Let $X \neq \emptyset$
+
+          $\forall y \in X, y \cap X \neq \emptyset$
+
+          Choose any $y_1 \in X$, choose $y_2 \in X \cap Y$. $y_2 \in X$, so $y_2 \cap X \neq \emptyset$. Choose $y_3 \in x \cap y_2$...
+
+    \item Axiom Schema of Replacement
+
+          If $\phi$ is a formula of 1st order logic, $A$ is any set, then $\phi$ applied to $A$ is contained in a set.
+
+\end{enumerate}
+
+\end{document}

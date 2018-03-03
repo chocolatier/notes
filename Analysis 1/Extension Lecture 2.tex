@@ -80,41 +80,41 @@
     \setcounter{enumi}{6}
     \item Axiom of Specification:
 
-    The collection of all elements of a known set, that satisfiy a certain predicate, is a set.
+          The collection of all elements of a known set, that satisfiy a certain predicate, is a set.
 
-    E.g $\{x \in \N \vert x \text{ is prime}\}$
-    
+          E.g $\{x \in \N \vert x \text{ is prime}\}$
+
     \item Axiom of power set
 
-    If S is a set, then the collection of all subsets of S is a set, called the power set. $\mathcal P (S)$
+          If S is a set, then the collection of all subsets of S is a set, called the power set. $\mathcal P (S)$
 
-    $(a,b) = \{\{a\}, \{a, b\}\}$
+          $(a,b) = \{\{a\}, \{a, b\}\}$
 
-    $A \times B := \text{set of ordered pairs} (a,b) = \{\{a\}, \{a, b\}\}$
+          $A \times B := \text{set of ordered pairs} (a,b) = \{\{a\}, \{a, b\}\}$
 
-    Let $A,B$ be sets. A function $f : A \rightarrow B$ is an element of the $\mathcal{P} (A \times B)$,
+          Let $A,B$ be sets. A function $f : A \rightarrow B$ is an element of the $\mathcal{P} (A \times B)$,
 
-    \begin{itemize}
-        \item For every $a \in A$, there is some $b \in B$ such that $(a,b) \in F$
-        
-       \item if $b_1$ and $b_2 \in B$ such that $(a,b_1) \in \in F$ and $(a, b_2) \in f$ then $b_1 = b_2$
-    \end{itemize}
+          \begin{itemize}
+              \item For every $a \in A$, there is some $b \in B$ such that $(a,b) \in F$
+
+              \item if $b_1$ and $b_2 \in B$ such that $(a,b_1) \in \in F$ and $(a, b_2) \in f$ then $b_1 = b_2$
+          \end{itemize}
 
     \item Let $X$ be a set. Define $\succ(x) = x^{+} := x \cup \{x\}$.
-    There exists a set S such that
-    \begin{enumerate}
-        \item $\emptyset \in S$, 
-        \item $x \in S$ then $x^{+} \in S$.
-        
-        E.g. $succ(\emptyset) = \emptyset \cup {\emptyset} = {\emptyset}$
-        $\{\emptyset\}^{+} = \{\emptyset\} \cup \{\{\emptyset\}\} = \{\emptyset, \{\emptyset\}\}$
-    \end{enumerate}
+          There exists a set S such that
+          \begin{enumerate}
+              \item $\emptyset \in S$,
+              \item $x \in S$ then $x^{+} \in S$.
 
-    \item Axiom of choice. 
+                    E.g. $succ(\emptyset) = \emptyset \cup {\emptyset} = {\emptyset}$
+                    $\{\emptyset\}^{+} = \{\emptyset\} \cup \{\{\emptyset\}\} = \{\emptyset, \{\emptyset\}\}$
+          \end{enumerate}
 
-    A choice function f defined on a set X of non-empty sets is a function with the property that if $a \in X$ then $f(a) \in a$.
+    \item Axiom of choice.
 
-    Choice functions always exist for any $X$.
+          A choice function f defined on a set X of non-empty sets is a function with the property that if $a \in X$ then $f(a) \in a$.
+
+          Choice functions always exist for any $X$.
 \end{enumerate}
 
 
@@ -149,41 +149,41 @@ Define $\N = \cap_{x \in I_S} x = \{ x \in S \vert \forall T \in I_s, x \in T\}$
 
     Let $p$ be a predicate defined on $\N$. Assume that $p(0)$ holds, and for every $n \in \N, p(n)$ implies $p (n^+)$.
     Then $p(n)$ holds for every $n \in N$.
-    
+
 \end{theorem}
 
 \begin{proof}
-    Fix p, with the above properties. 
+    Fix p, with the above properties.
 
     $S = \{x \in \N \vert p(x) \text{ holds}\}$.
-    We want to show that $S = N$, i.e. the elements of $S$ are exactly the elements of $\N$. 
+    We want to show that $S = N$, i.e. the elements of $S$ are exactly the elements of $\N$.
 
     Observation
     S is inductive
     \begin{enumerate}
-        \item $\emptyset \in S$, because $p(0) = p(\emptyset)$ holds. 
-        \item If $x \in S$ it means $p(x)$ holds, therefore $p(x^+)$ also holds. 
+        \item $\emptyset \in S$, because $p(0) = p(\emptyset)$ holds.
+        \item If $x \in S$ it means $p(x)$ holds, therefore $p(x^+)$ also holds.
 
-        So, $x^+ \in S$  
+              So, $x^+ \in S$
     \end{enumerate}
 
-    1 and 2 tell us that $S$ is inductive. 
+    1 and 2 tell us that $S$ is inductive.
 
-    $S \subseteq \N$ by construction. 
+    $S \subseteq \N$ by construction.
 
-    $N \subseteq S$ by construction. 
+    $N \subseteq S$ by construction.
 
     $\implies S = \N$
 \end{proof}
 
 \begin{theorem}
-    If $m, n \in \N$, such that $m^+ = n^+$, then $m = n$. 
+    If $m, n \in \N$, such that $m^+ = n^+$, then $m = n$.
 \end{theorem}
 
 \begin{proof}
     \begin{lemma}
         Let $x, n \in \N$.
-        If $x \in n$ then $x \subseteq n$ 
+        If $x \in n$ then $x \subseteq n$
     \end{lemma}
 \end{proof}
 \end{document}

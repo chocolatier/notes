@@ -1,0 +1,191 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PS}{\mathcal P}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+%
+% The following macro is used to generate the header.
+%
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+\newcommand\R{\mathbb{R}}
+
+
+\begin{document}
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+% \lecture{2}{March 03}{Analysis Extension}{Axiomatic Set Theory}
+%\footnotetext{These notes are partially based on those of Nigel Mansell.}
+
+% **** YOUR NOTES GO HERE:
+
+\section{Metric Spaces}
+
+\begin{definition}
+    A Metric space $(X,d)$ is a set $X$ together with a function $d : X \times X \rightarrow \R$ s.t.
+
+    \begin{itemize}
+        \item Positivity: $d(x,y) \geq 0$, $= 0 \iff x = y$
+        \item Symmetry: $d(y,x) = d(x,y)$
+        \item Triangle inequality: $d(x,y) \leq d(x,z) + d(z,y)$
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    \begin{itemize}
+        \item $\R, d(x,y) = |x-y|$
+        \item $R^n, d(x,y) = \big( \sum_{i+1}^n |x_i - y_i|^2\big)^{\frac12}$
+
+        $d_p(x,y) = \big( \sum_{i+1}^n |x_i - y_i|^p\big)^{\frac1p}$
+        
+        $p = 1$ is the Manhattan Metric
+        
+        $d_{\infty} (x,y) = max_{1\leq i \leq n} |x_i - y_i|$
+        \item Any normed space $(V, \|\cdot\|)$
+        \item X any set $(\neq \emptyset)$
+
+
+        $d(x,y) = 1 \text{ if } x \neq y, 0 \text{ if } x = y$
+
+        \item TODO: Insert diagram Globe
+
+        \item TODO: Insert diagram Toruses
+
+        \item Paris metro or post office metric 
+
+        $d(x,y) = \|x-y\| $ if $y = tx $ for some $t \in \R$
+
+        $|x| + |y|$ otherwise 
+
+        \item P-adic Metric: $\Z$, let $p$ be a prime. 
+
+        If $x,y \in \Z$, $x - y = p^kn$, $p $ does not divide $n$
+
+        $d(x,y) = 1/(k+1)$ if $x \neq y$
+
+        $0$ if $x = y$
+    \end{itemize}
+\end{example}
+
+\begin{definition}
+    Let $(X,d)$ be the a metric space. 
+
+    The open ball of radius $r$, centre $a$ is the set $B_r(a) = \{x \in X 
+    \vert d(x,a) < r\}$
+\end{definition}
+
+\begin{example}
+    \item $\R$ usual metric, $B_r = (a-r,a+r)$
+
+    \item $\R^n B_1(0) \in \R^n, d $
+
+    TODO: Insert Diagrams for different metrics
+
+    \item B_r(x) = \{x\} if $r \leq 1$
+
+    B_r(x) = X if $r \geq 1$
+\end{example}
+
+\begin{definition}
+    $Y \subset X$ is a neighbourhood of a point $x \in X$ if $\exists r > 0$ s.t $B_r(x) \subset Y$
+\end{definition}
+
+\begin{definition}
+    A set $X \subset X$ is bounded if $S \subset B_r(x)$ for some $x 
+    \in X, r > 0$
+\end{definition}
+
+\begin{proposition}
+    If $S \subset X$ is bounded, then for any $y \in X \exists r > 0$ s.t. $S \subset B_r(y)$
+\end{proposition}
+
+\begin{proof}
+    Ex: Use triangle ineq
+\end{proof}
+
+\begin{definition}
+    Suppose $A \subset X$. A point $x \in X$ is an interior point of $A$ if $\exists r>0$ s.t. $B_r(x) \subset A$ 
+
+    $x \in X$ is an exterior point if $A$ if $\exists r > 0$ s.t. $B_r (x) \subset A^c = X - A$
+
+    A point $x \in X$ is a boundary point of $A$ if $\forall r > 0$, if $B_r(x)$ contains points of A and points of $A^c$
+
+    Set of interior points = int A 
+    exterior = ext A 
+    boundary = $\delta A$
+
+\end{definition}
+
+\begin{proposition}
+    $X = int A \cup ext A \cup \delta A$. These sets are pairwise disjoint, 
+
+    $ext A = int(A^c)$
+
+    $int A = ext(A^c)$
+
+    $int A \subset A$, $ext A \subset A^c$
+\end{proposition}
+
+\end{document}

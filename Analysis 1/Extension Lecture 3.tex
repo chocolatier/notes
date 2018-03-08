@@ -1,0 +1,205 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PS}{\mathcal P}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+%
+% The following macro is used to generate the header.
+%
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+\newcommand\R{\mathbb{R}}
+
+
+\begin{document}
+
+\subsection{recap}
+
+Defined $\N$
+
+$0 = \emptyset$
+
+$1 = \{\emptyset\}$
+
+$2 = \{\emptyset, \{\emptyset\}\}$
+
+\subsection{Today}
+
+Arithmetic on $\N$
+
+How can we make sense of "1+2 = 3?"
+
+
+Strategy: Define the function "addition of m" for every $m \in N$
+
+\begin{theorem}
+    For every $m \in \N$, there exists a function $S_m \subset \N \times \N$ such that 
+    \begin{itemize}
+        \item     $S_m(0) = m$
+        \item $\forall n \in \N, S_m(n^+) = [S_m(n)]^+$
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+    Let's construct a relation $S_m' = \N \times \N$ with the "right" properties, then we'll show $S_m'$ is a function.
+
+    $\mathcal{S}_m = \{R \subset \N \times \N \vert (0,m) \in R, \text{ and if } (n,x) \in R \text{ then } (n^+,x^+) \in R\}$
+
+    $\mathcal{S}_m \ni \N \times \N$, so $\mathcal{S} \neq \emptyset$
+
+    Define $s_m' = \cap_{R\in\mathcal{S_m}} R$
+
+    $Notice:$
+    \begin{enumerate}
+        \item $S+m' \subseteq \N \times \N$
+
+        \item $(0,m) \in s_m'$
+
+        \item If $(n,x) \in s_m', then (n^+,x^+) \in s_m'$
+
+    \end{enumerate}
+
+    Strategy: Show that $S_m'$ is a function.
+
+    Show
+
+    \begin{enumerate}
+        \item $Domain (s_m') = \N$
+        \item If $(n,x)$ and $(n,y)$ are both in $s_m'$ then then $x = y$
+    \end{enumerate}
+
+    \begin{proof} of 1
+
+        Let $p(n)$ be true if there is some $x \in \N$ such that $(n,x) \in s'_m$
+        
+        $p(0)$ is true because $(0,m) \in s_m'$
+
+        Suppose $p(n)$ is true, so there is some $x \in \N$ such that $(n,x) \in s_'m \implies (n^+, x^+)$, so $p_n$ is true. 
+
+        So domain $s_m'= \N$ 
+        
+    \end{proof}
+
+    \begin{proof} of 2
+        Let $p(n)$ be true if for $\forall r \in n$, there is a unique $x \in \N$ such that $(r,x)\in s_m'$.
+
+        $p(0)$ is vacuously true. 
+
+        Suppose $p(n)$ is true. 
+
+        We want to show $p(n^+)$, i.e. $\forall r \in \N$, $r \in n+, \exists! x \in \N$ such that $(r,x) \in s_m'$
+
+        If $r \in n^+$, then either $r \in n$ or $r = n$. Consider any $r \in n^+$.
+
+        If $R \in n$, then we know $\exists! x \in \N$, s.t. $(r,x) \in s_m'$
+
+        Now lets prove the statement for $r = n$. 
+
+        Suppose that $\exists a,b \in \N$ such that $(n,a)$ and $(n,b)$ are both in $s_m'$.
+
+        Claim: If $a \neq b$, not both of these can have "predecessors". 
+
+        Suppose $a \neq b$
+
+        Suppose that there are $p_1,x_1,p_2,x_2 \in \N$ such that $(p_1,x_1) \in s_m', (p_2,x_2) \in s_m' and (p_1,x_1) = (n,a), (p_2,x_2) = (n,b)$
+
+        $\implies p_1^{+} = p_2{+}, \implies p_1 = p_2 = p$
+
+        $(p,x_1) \in s_m', (p,x_2) \in s_m'$ and $p^+ = n$ so $p \in n$. 
+
+        Induction hypothesis $x_1 = x_2 \implies a = b$. Contradiciton. 
+
+        Suppose $a \neq b$. Suppose WLOG that $(n,a)$ doesn't have a predecessor. Define $s_m'' := s_m'(n,a)$.
+
+        $s_m''$ satisifies the properties of being in $\mathcal{S}_m$ - Exercise. 
+
+        Problem, because $s_m' $ was the intersection of all $R \in \mathcal{S}_m$.
+
+        $\implies s'_m \subseteq s_m''$. Contradiciton. 
+
+        Write $s_m' = s_m$ Addition by m function. 
+    \end{proof}
+
+    Properties
+    
+    \begin{enumerate}
+        \item $\forall n \in \N, s_1(n) = n^+$
+        \item $\forall n\in \N, s_0(n) = n$
+        \item $\forall m,n,k \in \N$ we have $S_{s_m(n)}(k) = s_m(s_n(k))$ (Assoc)
+        \item $\forall m,n \in \N, $ we have $s_m(n) = s_n(m)$.
+
+    \end{enumerate}
+
+    \begin{itemize}
+        \item Let $p(n)$ be true if $s_1(n) = n^+$, $p(0)$. Suppose $p(n)$ is true. $s_1(n^+) = [s_1(n)]^+ = (n^+)^+$
+        $p(n^+)$ is true. 
+
+        
+    \end{itemize}
+
+
+\end{proof}
+
+\end{document}

@@ -1,0 +1,193 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PS}{\mathcal P}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+%
+% The following macro is used to generate the header.
+%
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+\newcommand\R{\mathbb{R}}
+
+
+\begin{document}
+
+$(X,d) $ a metric space, $A \subset X$
+
+$x \in A \subset X$ is an interior point of $A$ if $\exists r > 0$ s.t.$B_r(x) \subset A$.
+
+$x \in A \subset X$ is an exterior point if $A$ if $\exists r > 0$ s.t $B_r(x) \subset A^c$
+
+$x \in A \subset X$ is a boundary point of A if every ball $B_r(a)$ contains points of $A$ and $A^c$
+
+Prop. $X = int A \cup \partial A \cup ext A$ (pairwise disjoint)
+
+Ext A = $int A^c$, $int A = ext(A^c)$
+
+$int A \subset A$, $ext A \subset A^c$
+
+TODO: Diagram. 
+
+\begin{definition}
+    $x \in X$ is a limit point of A if every ball $B_r(x)$ contains points of A other than X.
+    X may or may not be an element of $A$. 
+
+    E.g. (0,1]
+
+    0 is a limit point, 1 is a limit point. 
+    $0 \not\in A$, $1 \in A$
+
+    $x \in A$ is an isolated point of A if $\exists r > 0$ s.t. $B_r(x) \cup A = \{x\}$
+
+    Closure of A $\bar A = A \cup \{\text{limit points of a}\}$
+\end{definition}
+
+\begin{proposition}
+
+    \begin{enumerate}
+
+        \item A limit point of $L$ of need not be an element of $A$
+        \item If x is a limit point of A then every open ball $B_r(x)$ contains infinitely many points of $A$. 
+        \item $A \subset \bar A$ 
+        \item Every point of $\bar A$ is either a limit point of A or an isolated point of A, but not both. 
+        \item $x \in \bar A$ iff every ball $B_r(x)$ contains a point fo $A$.  
+    \end{enumerate}   
+\end{proposition}
+
+\begin{proof}
+   2) If finitely many points, just draw a ball of smaller distance -> isolated point, not limit point by contradiction. 
+\end{proof}
+
+Let $A = [0,1] \cup {3} \subset \R$
+
+$int A = (0,1)$
+$\partial A = \{ 0, 1, 3\}$
+
+3 is an isolated point 
+
+Limit points of $A = [0,1]$
+
+Let $A = [0,1] \cup {3} \subset \ [0,2] \cup \{3\}$
+
+$int A = [0,1)$
+
+\begin{theorem}
+    $\bar A = (ext A)^x$
+
+    $\bar A = int A \cup \partial A$
+
+
+    $\bar A = A \cup \partial A$
+\end{theorem}
+
+\begin{proof}
+    1) $x \in \bar A$ iff every ball $B_r$(x) contains at least one element of A. 
+
+    2) WEe have $X = int A \cup \partial A \cup ext A$, but these are pairwise disjoint. It follws that $\bar A = int A \cup \partial A$
+    
+    3) Let $x \in A \cup \partial A$
+
+    $x \in \partial A \implies x \in int A \cup \partial A = \bar A$
+
+\end{proof}
+
+\subsection{Special case $A = B_r(x) \subset \R^n$} 
+
+$int A = A$
+
+$ext A = \{y : d(y,x) > r\}$
+
+$\partial A = {y : d(y,x) = r}$
+
+$\bar A = \{y : d(y,x) \leq  r\}$ 
+
+\subsection{General case }
+
+$int A = A$
+
+$ext A \supset \{y : d(y,x) > r\}$
+
+$\partial A \subset {y : d(y,x) = r}$
+
+$\bar A \subset \{y : d(y,x) \leq  r\}$ 
+
+Ex. $X = {0,1}$
+
+
+    d(0,0) = 0
+    d(1,1) = 0
+    d(0,1) - d(1,0) = 1
+
+A = $B_1(0) = \{x : d(x,0) < 1\} = {0}$
+
+$int A = A $
+
+$ext A = \{1\}$
+
+$\partial A = \emptyset$
+
+$\bar A = A$
+\end{document}

@@ -1,0 +1,187 @@
+\documentclass[twoside]{article}
+    \setlength{\oddsidemargin}{0.25 in}
+    \setlength{\evensidemargin}{-0.25 in}
+    \setlength{\topmargin}{-0.6 in}
+    \setlength{\textwidth}{6.5 in}
+    \setlength{\textheight}{8.5 in}
+    \setlength{\headsep}{0.75 in}
+    \setlength{\parindent}{0 in}
+    \setlength{\parskip}{0.1 in}
+    
+    %
+    % ADD PACKAGES here:
+    %
+    
+    \usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+    
+    %
+    % The following commands set up the lecnum (lecture number)
+    % counter and make various numbering schemes work relative
+    % to the lecture number.
+    %
+    \newcounter{lecnum}
+    \renewcommand{\thepage}{\thelecnum-\arabic{page}}
+    \renewcommand{\thesection}{\thelecnum.\arabic{section}}
+    \renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+    \renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+    \renewcommand{\thetable}{\thelecnum.\arabic{table}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\PS}{\mathcal P}
+    \newcommand{\Z}{\mathbb{Z}}
+    
+    
+    %
+    % The following macro is used to generate the header.
+    %
+    
+    %
+    % Convention for citations is authors' initials followed by the year.
+    % For example, to cite a paper by Leighton and Maggs you would type
+    % \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+    % (To avoid bibliography problems, for now we redefine the \cite command.)
+    % Also commands that create a suitable format for the reference list.
+    \renewcommand{\cite}[1]{[#1]}
+    \def\beginrefs{\begin{list}%
+            {[\arabic{equation}]}{\usecounter{equation}
+             \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+             \setlength{\labelwidth}{1.6truecm}}}
+    \def\endrefs{\end{list}}
+    \def\bibentry#1{\item[\hbox{[#1]}]}
+    
+    %Use this command for a figure; it puts a figure in wherever you want it.
+    %usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+    \newcommand{\fig}[3]{
+                \vspace{#2}
+                \begin{center}
+                Figure \thelecnum.#1:~#3
+                \end{center}
+        }
+    % Use these for theorems, lemmas, proofs, etc.
+    \newtheorem{theorem}{Theorem}[lecnum]
+    \newtheorem{lemma}[theorem]{Lemma}
+    \newtheorem{proposition}[theorem]{Proposition}
+    \newtheorem{claim}[theorem]{Claim}
+    \newtheorem{corollary}[theorem]{Corollary}
+    \newtheorem{definition}[theorem]{Definition}
+    \newtheorem{example}[theorem]{Example}
+    
+    \newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+    
+    % **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+    
+    \newcommand\E{\mathbb{E}}
+    \newcommand\R{\mathbb{R}}
+\newcommand\Q{\mathbb{Q}}
+    
+    
+    \begin{document}
+
+    \subsection{recap}
+    We defined "+" on $\N$.
+    
+    \subsection{Properties of $\N$} [Exercises]
+
+    \begin{enumerate}
+        \item If $m, n \in \N$, then $m \in n$ iff $m \subsetneq n$
+        \item If $m, n \in \N$, we say $m \leq n$ if either $m \in n$ or $m = n$
+        For any two $m,n \in \N$, either $m < n $ or $n < m$ or $n = m$ (Exactly one is true - Trichotomy)
+        \item For every $m,n \in \N$, we have $m \leq n \iff $ there is a unique $k \in \N$ such that $m+k = n$ - Induction proof
+        \item If $m,n,k \in \N$ such that $n+m = n+k$, then $m = k$.  - Induction proof 
+    \end{enumerate}
+
+    \begin{definition}[Subtraction]
+        If $m, n \in \N$, and $m \leq n$, set $n - m := $ the unique k, such that $m + k = n$
+    \end{definition}
+
+    \begin{definition}[Multiplication]
+        Let $m \in \N$. Let $p_m$ be a relation on $\N \times \N$ with two properties: 
+        \begin{enumerate}
+            \item $p_m(0) = 0$
+            \item $p_m(n+) = p_m(n) + m$
+        \end{enumerate}
+    \end{definition}
+
+    Proceeding exactly with $S_m$, we can show that there is a function that satisfies the above properties. 
+    Properties: 
+    \begin{enumerate}
+        \item Commutativity
+        \item Associativity etc. 
+    \end{enumerate}
+
+    \section{Construction of the Integers $\Z$}[Equivalence classes of pairs of naturals]
+
+    Let $Z := \N \times \N$. 
+
+    Define the following relation $R$ on $Z \times Z$ as follows: 
+    $R \subset Z \times Z$
+
+    $R := \{((a,b),(c,d)) \in Z \times Z \vert a+d = b+c \} $
+
+    $((1,5),(5,9)) $ etc. 
+
+    \begin{claim}
+        $R$ is an equivalence relation. 
+    \end{claim}
+    \begin{proof}
+        \begin{itemize}
+            \item Reflexivity: $\forall (a,b) \in z$, notice: $a + b = b+a \implies ((a,b),(a,b)) \in R$ (comm)
+            \item Symmetry:  $\forall ((a,b),(c,d)) \in R, ((c,d),(a,b)) \in R$ (comm)
+            \item Transitivity: Suppose $((a,b),(c,d)) \subset R $ and $((c,d),(p,q)) \in R$
+            a + d = b + c and c + q = d + q
+            (assoc and comm)
+            (a+d) + (c+q) = (b+c) + (d+p)
+            (a+q) + (c+d) = (b+p) + (c+d)
+            (property 4)
+            $a+q = b+p = ((a,b), (p,q)) \in R$
+        \end{itemize}
+    \end{proof}
+
+    R is an equivalence relation on $Z \times Z$.
+
+    If $x \in Z$, then [x] = equivalence class of x = $\{y \in Z \vert (x,y) \in R\}$
+    $[x] \subseteq Z $ and $ [x] \neq \emptyset$
+
+    Define $\Z := Z/R =$ set of equivalence classes of R on Z 
+
+    $= {[x] \vert x \in Z}$
+
+    E.g. $[(1,3)] = [(2,4)] \in \Z$
+
+    $i : \N \rightarrow \Z$, given by $n \rightarrow [(n,0)]$
+    $ [(a,b)] + [(c,d)] := [(a+c, b+d)]$
+    
+    2) Negative:
+
+    If $[(a,b)]$, define $-[(a,b)] := [(b,a)]$
+
+    3) Subtraction.
+
+    If $[(a,b)], [(c,d)] \in \Z$ then 
+
+    $[(a,b)] - [(c,d)] := [(a,b)] (-[(c,d)])$
+    = [(a,b)] + [(d,c)]
+    = [(a+ d, b+c)]
+
+    4) Order relation:
+
+    [(a,b)] < [(c,a)] if a+ d < b+ c. 
+
+    Well defined, and strict/total order. That is, for all [(a,b)], [(c,d)] well defined, or (c,d) < (a,b) or [(a,b) = (c,d). Exactly one satisfied]. 
+    
+    
+    5 Multiplication (a,b):[(c,d)] = [ac + bd, ad + bc]
+
+    6) Absolute value $\vert [(a,b) \vert = a - b if a \geq q], beq otherwise$
+
+    From now on, we'll write integers the usual way, $[(a,b)]$ = (a-b) 
+
+    -(b-a) if b> a
+
+    \section{Constructions of the rationls $\Q$}
+
+    $\Q = \{(a,b) \in \Z \times \Z \vert b = 0\}$
+
+    Define relation $R$ on $Q \times Q [R \subset Q \times Q]$.
+
+    $((a,b),(c,d)) \in R$ iff $ad = bc$
+\end{document}

@@ -61,7 +61,7 @@
         }
     % Use these for theorems, lemmas, proofs, etc.
     \newtheorem{theorem}{Theorem}[lecnum]
-    \newtheorem{lemma}[theorem]{Lemma}
+    \newtheorem{lemma}[theorem]{Lemma} 
     \newtheorem{proposition}[theorem]{Proposition}
     \newtheorem{claim}[theorem]{Claim}
     \newtheorem{corollary}[theorem]{Corollary}
@@ -75,6 +75,8 @@
     \newcommand\E{\mathbb{E}}
     \newcommand\R{\mathbb{R}}
     
+
+    \usepackage{tikz-cd}
     
     \begin{document}
 
@@ -109,7 +111,11 @@
 
         $p-gon$ constructible $\implies [K : \Q] = \text{power of 2}$
 
-        [TODO: Insert Tower Diagram 1]
+        \begin{tikzcd}
+        \R \arrow[d, dash] & \arrow[dl, dash, "2"]  K (i) \arrow[dr, dash, "?"] \\
+        \arrow[dr, dash, "2^?"] K & & \Q(\zeta_p) \arrow[dl, dash, "p-1"] \\
+        &\Q 
+        \end{tikzcd}
 
         $\therefore p-1 \vert 2^{?}$
 
@@ -119,8 +125,12 @@
 
         2) $\zeta_p^2 $ is a root of $\frac{x^{p^2} - 1}{x^p - 1} = 1 + x^p + .. + x^{p(p-1)}$
 
-        [TODO: Insert tower diagram 2]
-
+        \begin{tikzcd}
+            & \arrow[dl, dash, "2"]  K (i) \arrow[dr, dash, "?"] \\
+            \arrow[dr, dash, "2^?"] K = \Q(cos(\frac{2\pi}{p^2}), sin(\frac{-2\pi}{p^2})) & & \Q(\zeta_{p^2}) \arrow[dl, dash, "p-1"] \\
+            &\Q 
+            \end{tikzcd}
+    
         $\therefore p(p-1) \vert 2^2$
 
         $\therefore p = 2$

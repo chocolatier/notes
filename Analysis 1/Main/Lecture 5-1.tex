@@ -1,0 +1,227 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PS}{\mathcal P}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\intr}{\text{int }}
+\newcommand{\C}{\mathbb{C}}
+
+
+%
+% The following macro is used to generate the header.
+%
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+\newcommand\R{\mathbb{R}}
+\newcommand\ep{\varepsilon}
+
+
+\begin{document}
+
+\section{Sequences and Convergence}
+
+$(X,d)$ a metric space. 
+
+A sequences $X$ is a function $f: \N \rightarrow X$.
+
+Usually we write a sequence as $(X_n)_{n=1}^{\infty}$, where $x_n = f(n)$
+
+A subsequence of $(X_n)$ is a sequence $(X_{n_i})_{i=1}^{\infty}$, where $(n_i)_{i=1}^{\infty}$
+
+\begin{definition}
+    We say $(X_n)$ converges to $x$ if for any $\varepsilon > 0 \exists N$, s.t. $n > N \implies d(x,x_n) < \varepsilon$.
+
+    Write $X_n \rightarrow x$
+\end{definition}
+
+\begin{proposition}
+    A sequence in a metric space can have at most one limit. 
+\end{proposition}
+
+\begin{proof}
+    Suppose $X_n \rightarrow x$, $X_n \rightarrow y$.
+
+    Let $\varepsilon = \frac14d(x,y) > 0$
+
+    Then there exits n such taht $n > N \implies d(x,x_n) < \epsilon$
+
+    $\exists \tilde N$ s.t. $N \tilde N \implies d(y,x_n) < \epsilon$
+
+    $4\varepsilon \leq d(x,y) \leq(x,x_n) + d(x_n,y)$
+
+    $< \varepsilon + \varepsilon$ if $n > max{N, \tilde N}$
+
+    Contradiction. 
+
+    $\therefore x = y$
+\end{proof}
+
+\begin{definition}
+    A sequence $(x_n)_{n=1}^\infty$ is bounded if the set $\{x_n\}_{n_1}^\infty$ is bounded in $X$.
+\end{definition}
+
+E.g. $x_n = 1, \forall N$
+
+$(x_n) = 1,1,1,1,1$
+
+$\{x_n\} = \{1\}$
+
+\begin{proposition}
+    A convergent sequence in a metric space $(X,d)$ is bounded. 
+\end{proposition}
+
+\begin{proof}
+    Suppose $x_n \rightarrow x$. $\exists N$ s.t. $n > N \implies d(x,x_n) < 1$.
+
+    Then at most $x_1, .., x_n$ can lie outside $B_1(x)$
+
+    We can take a large enough radius, and it is bounded. 
+\end{proof}
+
+\begin{definition}
+    A sequence $(x_n)$ in a metric space $(X,d)$ converges to $x$ if $\forall \ep > 0$, $\exists N s.t. n > N \implies d(x,x_n) < \ep$
+
+
+    A sequence in $(X,d)$ is Cauchy if $\forall \ep > 0, \exists N$ s.t. $m,n > N \implies d(x_m,x_n) < \ep$
+
+    Same proof shows that every Cauchy sequence is bounded. 
+\end{definition}
+
+\begin{theorem}
+    If $x_n \rightarrow x$, $y_n \rightarrow y$, then $d(x_n,y_n) \rightarrow d(x,y)$
+\end{theorem}
+
+\begin{theorem}
+    $d(x,y) \leq d(x,x_n) + d(x_n,y_n) + d(y_n,y)$ by $\triangle$ ineq applied twice. 
+
+    $\implies d(x,y) - d(x_n, y_n) \leq d(x,x_n) + d(y, y_n) \rightarrow 0 as n \rightarrow \infty$
+
+    $d(x_n, y_n) \leq d(x_n, x) + d(x,y) + d(y,y_n)$
+
+    $\implies d(x_n, y_n) - d(x,y) \leq d(x_n,x) + d(y_n, y) \rightarrow 0$ as $n \rightarrow 0$ 
+\end{theorem}
+
+\subsection{Sequences in $\R$}
+
+A sequence $(x_n) \subset \R$ is 
+
+increasing (non-decreasing) if $x_n \leq x_{n+1} \forall n$
+
+decreasing (non-increasing) $x_n \geq x_{n+1} \forall n$
+
+
+strictly increasing if $x_n < x_{n+1} \forall n$
+
+strictly decreasing if $x_n > x_{n+1} \forall n$
+
+A  sequence in $R$ is monotone if it is either increasing or decreasing. 
+
+\begin{theorem}
+    Every sequence in $\R$ contains a monotone subsequence. 
+\end{theorem}
+
+\begin{proof}
+    Let $S = \{k : x_k \geq x_n \forall n \geq k\}$
+    
+    If $S$ is infinite, the $S = (n_i)_{i=1}^\infty$ with 
+
+    $n_{i+1} > n_i \forall i$
+
+    and $x_{n_{i+1}} \geq x_{n_i} \forall I$
+
+    $\therefore (x_{n_i})_{i=1}^\infty $ is an increasing sequence
+
+    $\therefore $ monotone. 
+
+    Suppose $S$ is finite, say largest element of $S$ is $N$.
+
+    Choose $m_1 > N \implies x_{m_1}$
+
+    Choose $m_2 > m_1 \text{s.t.} x_{m_2} \geq x_{m_1}$ (Such $m_2$ exitsts, if not then $m_1 \in S_1$ not possible)
+
+    Choose $m_3 > m_2 \text{s.t.} x_{m_3} \geq x_{m_2}$
+
+    $\vdots$
+
+    Then $(x_{m_i})$ is an increasing sequence and therefore monotone. 
+\end{proof}
+
+\begin{theorem}
+    Every bounded monotone sequence in $\R$ has a limit. 
+\end{theorem}
+
+\begin{proof}
+    See first year notes. 
+\end{proof}
+
+\begin{theorem}[Bolzano-Weierstrauss theorem]
+
+    Every bounded sequence of real numbers has a convergent subsequence.
+    
+\end{theorem}
+
+\begin{proof}
+    Any such sequnce has a monotone subsequence. Such a subsequence is also bounded, therefore converegent. 
+\end{proof}
+
+\end{document}

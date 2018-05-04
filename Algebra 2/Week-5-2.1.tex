@@ -1,0 +1,277 @@
+\documentclass[twoside]{article}
+    \setlength{\oddsidemargin}{0.25 in}
+    \setlength{\evensidemargin}{-0.25 in}
+    \setlength{\topmargin}{-0.6 in}
+    \setlength{\textwidth}{6.5 in}
+    \setlength{\textheight}{8.5 in}
+    \setlength{\headsep}{0.75 in}
+    \setlength{\parindent}{0 in}
+    \setlength{\parskip}{0.1 in}
+    
+    %
+    % ADD PACKAGES here:
+    %
+    
+    \usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+    
+    %
+    % The following commands set up the lecnum (lecture number)
+    % counter and make various numbering schemes work relative
+    % to the lecture number.
+    %
+    \newcounter{lecnum}
+    \renewcommand{\thepage}{\thelecnum-\arabic{page}}
+    \renewcommand{\thesection}{\thelecnum.\arabic{section}}
+    \renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+    \renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+    \renewcommand{\thetable}{\thelecnum.\arabic{table}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\PS}{\mathcal P}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\C}{\mathbb{C}}
+    
+    \newcommand{\F}{\mathbb{F}}
+    
+    
+    %
+    % The following macro is used to generate the header.
+    %
+    
+    %
+    % Convention for citations is authors' initials followed by the year.
+    % For example, to cite a paper by Leighton and Maggs you would type
+    % \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+    % (To avoid bibliography problems, for now we redefine the \cite command.)
+    % Also commands that create a suitable format for the reference list.
+    \renewcommand{\cite}[1]{[#1]}
+    \def\beginrefs{\begin{list}%
+            {[\arabic{equation}]}{\usecounter{equation}
+             \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+             \setlength{\labelwidth}{1.6truecm}}}
+    \def\endrefs{\end{list}}
+    \def\bibentry#1{\item[\hbox{[#1]}]}
+    
+    %Use this command for a figure; it puts a figure in wherever you want it.
+    %usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+    \newcommand{\fig}[3]{
+                \vspace{#2}
+                \begin{center}
+                Figure \thelecnum.#1:~#3
+                \end{center}
+        }
+    % Use these for theorems, lemmas, proofs, etc.
+    \newtheorem{theorem}{Theorem}[lecnum]
+    \newtheorem{lemma}[theorem]{Lemma} 
+    \newtheorem{proposition}[theorem]{Proposition}
+    \newtheorem{claim}[theorem]{Claim}
+    \newtheorem{corollary}[theorem]{Corollary}
+    \newtheorem{definition}[theorem]{Definition}
+    \newtheorem{example}[theorem]{Example}
+    
+    \newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+    
+    % **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+    
+    \newcommand\E{\mathbb{E}}
+    \newcommand\R{\mathbb{R}}
+    
+
+    \usepackage{tikz-cd}
+    
+    \begin{document}
+
+    \subsection{Splitting Fields}
+
+    \begin{definition}
+        F field, $f(x) \in F[x]$ non-zero, a splitting field of $f$ is a field extension $E/F$ such that $f(x) = \alpha \Pi_i(x - \alpha_i)$, with $\alpha, \alpha_1, \alpha_2, ..., \alpha_n$ and $E = F(\alpha_1, ..., \alpha_n)$
+    \end{definition}
+
+    F field, $A,B$ rings [e.g. $A = F[x]$, $F \rightarrow F[X]$]
+    
+    \begin{tikzcd}
+        A \arrow[d, "i_A"] \arrow[r, "\phi"] & B \\ 
+        F \arrow[ur, "i_B"]
+    \end{tikzcd}
+
+    \newcommand{\inj}{\rightarrow}
+    
+    $Hom_F(A,B) = \{\phi : A \rightarrow B\ \vert i_b = \phi i_A\}$
+
+    \begin{proposition}
+        $F \inj F[x], F \rightarrow B$ any ring morphism. 
+
+        $Hom_F(F[x], B) \rightarrow[\cong] B$
+
+        $\phi \mapsto \phi(x)$
+
+        \begin{proof}
+            Given $b \in B$, define $\phi_b: F[x] \rightarrow B$ by $\phi(\sum_{n=0}^ma_nx^n) = \sum_{n=0}^ma_nb^n$
+
+            Check $\phi_b$ is a ring morphism
+        \end{proof}
+    \end{proposition}
+
+    Cor: Fix $f(x) \in F[X]$, then there is a bijection $Hom_F (\frac{F[x]}{f(x)}, B)$
+    
+    TODO: Turn scratchwork into proof.
+
+    Scratchwork below [Also refer to video]
+
+    \begin{tikzcd}
+        A \arrow[d, "P"] \arrow[r, "\bar \phi_P"] & B \\ 
+        A/I \arrow[ur, "\bar \phi"]
+    \end{tikzcd}
+
+    $\phi(a + I) = \phi(a)$ 
+
+    $a + I = a'+I \implies a - a' \in I$
+
+    So $\phi(a) = \phi(a')$
+
+    $A = F[x]$
+
+    $\downarrow$ 
+    
+    $\frac{F[X]}{f} \rightarrow B$
+
+    % \begin{tikzcd}
+    %     \{\phi A \rightarrow B \vert \phi(I) = 0\} \arrow[d, \cong] \\
+    %     \{\bar \phi : \frac{A}{I} \rightarrow B\}
+    % \end{tikzcd}
+
+    \begin{corollary}
+        TODO: Write up from notes
+    \end{corollary}
+
+    \begin{proof}
+        $f(\alpha) = \frac{F[x]}{(f(x))}$, f min. poly of $\alpha$
+    \end{proof}
+
+    Cor: ANy two splitting fields $\frac{E_1}{F}$, and $E_2/F$ of a poly $f(x) \in F[x]$ are $F$-isomorphic. 
+
+    \begin{proof}
+        ETS there is an $F-$morphism $\phi:E_1 \rightarrow E_2$. Since then $[E_1:F] \leq [E_2:F]$
+        By symmetry there would be a map from $E_2$ to $E_1$, so $[E_1:F] \geq [E_2:F]$
+
+        So $\phi$ will be an isomorphism. 
+
+        Let $\alpha_1, ..., \alpha_n$ be the roots in $E_1$ of f, so $F(\alpha_1, ..., \alpha_n)$.
+
+        Assume by induction we ahve $\phi_i: F(\alpha_1, .., \alpha_i) \rightarrow E_2$
+
+        $F(\alpha_1,..., \alpha_{i+1}) \supseteq F(\alpha_1, ...,\alpha_{i}) \rightarrow E_2$
+
+        Let $g(x)$ be the min poly of $\alpha_{i+1}$ over $F(\alpha_1, ..., \alpha_i)$, then $g \vert F$. So there exists a root of $g \in E_2$, since $F$ splits there. 
+
+        User cor. to define $\phi_{i+1}$
+    \end{proof}
+    \subsection{Computing the degree of a splitting field}
+
+    \begin{enumerate}
+        \item $f(x) = x^3 -2$ over $\Q$.
+
+        $E = \Q()$
+    \end{enumerate}
+
+    \subsection{Lattice of subfields in $F_{p^n}$}
+
+    X poset $x \leq y$
+
+    % lattice 
+
+    % & $x or y$ [dl arrow], [dr arrow] join
+    % x [dr arrow] && y [dl arrow]
+    % & x and y meet
+
+    1) $X set, P(X) = {Y \subset X subset}$ 
+   $ X \leq Y \iff Y \subset X$
+
+    % & $x cup y$ [dl arrow], [dr arrow] join
+    % x [dr arrow] && y [dl arrow]
+    % & x cap y meet
+
+    2) V a vector space/F 
+    Subspaces_F(V) = \{W $\leq$ V\}
+
+    % & $x + y$ [dl arrow], [dr arrow] join
+    % x [dr arrow] && y [dl arrow]
+    % & x cap y meet
+
+    3) $F \subset K$ fields 
+
+    % & $E_3 = field generated$ [dl arrow], [dr arrow] join
+    % E1 [dr arrow] && E2 [dl arrow]
+    % & E1 cap E2 meet
+
+    Subfields$_F$(K) = $F \subseteq E \subset K, E$ field 
+
+    For all $m \vert n \exists! subfield of \F_{p^n}$ which is isom to $\F_{p^m}$
+
+    Example $F_{p^12} \supseteq F_{p^6}F_{p^2}F_{p^4}F_{p^3}F_{p}$
+
+    % diag
+
+    %  & F_p^12 
+    % F_p^6 && F_p^4
+    % F_p^3, F_p^2
+    % F_p
+
+    Note: 
+
+    $F \subset E_1$, $E_2 \subset K$. 
+    
+    $E_1 = E_2 \implies E_1 \cong E_2$
+    $ \implies [E_1:F] = [E_2:F]$
+
+    Converse not true, E.g. $\Q[\sqrt 2], \Q[\sqrt 3]$
+
+
+    \textbullet Look at $x^3 - 2$ over $\Q$
+    $\sqrt[3] 2$, $\sqrt[3] 2 \zeta$, $\sqrt[3] 2 \zeta^2 \in C$
+
+    $\Q(\sqrt[3] 2) 
+    \cong  \Q(\sqrt[3] 2 \zeta)$
+
+    $\Q(\sqrt[3] 2)  \cong \Q[x]/(x^3 - 2)$
+     $ \cong \Q(\sqrt[3] 2 \zeta)$
+
+     Fields are isom. but not equal. 
+
+     $\F_p^m = \{a \in \F_{p^n} \vert a^{p^m}=a\}$
+
+    Roots of $x^{p^n} - x$
+
+    Fixed points of $\phi^m = \phi \circ .. \phi (n times)$
+
+    $\phi$ frobenius map
+    $Def: E/F, \sigma: E \rightarrow E $ F-automomorphism. 
+    $(\sigma(a) = a \forall a \in F)$
+
+    $E^{\sigma} = \{a \in E \vert \sigma(a) = a\}$
+
+    Note $E^\sigma $ is a subfield of $E$, it contains $F$. 
+
+    $\sigma(1) = 1, \sigma(0) = 0$
+
+    $\sigma(a+b) = \sigma(a) + \sigma(b) = a + b$
+    $\sigma(ab) = \sigma(a)\sigma(b) = ab$
+
+    Def $E/F$ field extension. 
+
+    $Aut(E/F) = \{\sigma: E \rightarrow E \vert \sigma \text{  auto}\}$
+
+    This is a group. $id_E$, $\sigma, \tau \in Aut(E/F)$ so is $\sigma \circ \tau$. 
+
+    Claim : $Aut(F_{p^n}) = <\phi> \cong C_n$
+
+    Pf: Let $f$ be an irreducible polynomial of degree n. 
+    
+    $\F_p[x]/(f) \cong \F_{p^n}$
+
+    So all roots of $f$ are in $F_{p^n}$
+
+    $\alpha \mapsto \alpha_1, .... \alpha_n$ tf at most n automomorphism. 
+
+
+\end{document}

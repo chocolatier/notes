@@ -1,0 +1,213 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PS}{\mathcal P}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\intr}{\text{int }}
+
+
+%
+% The following macro is used to generate the header.
+%
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+\newcommand\R{\mathbb{R}}
+
+
+\begin{document}
+
+$(X,d)$ is a metric space. 
+
+\begin{definition}
+    $X$ is sequentially compact if every sequence in $X$ has a convergent sequence. 
+\end{definition}
+
+
+\begin{definition}
+    $X$ is compact if every covering of $X$ has a finite subcover. 
+\end{definition}
+\begin{theorem}
+    X is sequentially compact $\iff$ X compact. 
+\end{theorem}
+
+\begin{proof}
+    Compactness $\implies$ Sequential Compactness
+
+    Let $(x_n)$ be a sequence in $X$. 
+
+    WTS $(x_w)$ has a convergent subsequence. 
+
+    Let $A = {x_n}$ 
+    
+    $(x_n) = {x_1, x_2, ....}$
+
+    Case 1 $A$ is finite. 
+
+    Then some value $x_j \in A$ is repeated infinitely often in the sequence $(x_n)$.  Choose the subsequence $ (x_{n_j})$ with $x_{n_j} = \overline x\ \forall j$.
+
+    Then $(x_{n_j}) is a$ constant sequence $\therefore$ convergent. 
+
+    Case 2: A is infinite. 
+
+    Claim: A has a limit point.
+
+    Suppose not. Then $A$ is closed. because $\overline A = A \cup \{\text{limit points}\}$. 
+    
+    If $a \in A$, then $a$ is not a limit point. 
+
+    $\therefore \exists$ open set $\cup_a$ containing $a$, $A \cap U_a = \{a\}$. 
+
+    $X = A^c \underset{a \in A}\cup U_a$. 
+
+    By compactness $\exists$ a finite subcover of $X$.
+    
+    $X = A^c \cup U_{a_1} \cup \dots \cup U_{a_n}$. 
+
+    This is a contradiction because $A$ is infinite. 
+
+    Let $x$ be a limit point of $A$. 
+
+    $\forall \varepsilon > 0$, $B_\varepsilon(x)$ contains infinitely points points of $A$ other than $X$.
+    
+    Choose $x_{n_1} \in A$, s.t. $d(x_{n_1}, x) < 1$.
+
+    Choose  $x_{n_2} \in A$, $n_2 > n$,s.t. $d(x_{n_2}, x) < 1/2$.
+
+    $\vdots$
+
+    Choose  $x_{n_k} \in A$, s.t. $n_{k} > n_{k-1} $ $d(x_{n_k}, x) < 1/k$.
+
+
+    $\vdots$
+
+    Then $(x_{n_j})_{j=1}^\infty$ is a subsequence of $(x_n)$. $(x_{n_j}) \rightarrow x$ as $j \rightarrow \infty$
+
+    $\therefore (x_n)$ has a convergent subsequence. 
+
+    \medskip
+
+    Sequential compactness $\implies$ Compactness
+
+    Suppose $X$ is sequentially compact. 
+
+    Claim: For each $k \in \N$, $\exists$ finitely many points $\{x_1, \dots, x_N\}$ s.t. $x \in X \implies d(x_i,x) < \frac1k$ for some $x_i \in \{x_1, \dots, x_N\}$
+
+    Choose $x_1$
+
+    Choose $x_2 \in X \backslash B_{\frac1k}(x_1)$
+
+    Choose $x_3 \in X \backslash [B_{\frac1k}(x_2) \cup B_{\frac1k}(x_1)]$
+
+
+    Keep going until this stop. This must stop. 
+
+    If this does not stop, then $(x_n)$ is a sequence with no convergent subsequence.
+
+    For each $k \in \N$, let $A_k$ be the set chosen by this process. 
+
+    Let $A = \underset{k\in\N}\cup A_k$. Then $A$ is countable, dense.
+
+    \begin{definition}
+        $A$ is dense in $X$ if $\overline A = X$.       
+    \end{definition}    
+ 
+    Claim: Every open cover of $X$ has a countable subcover. 
+
+    Let $\mathcal F = \{U_i\}_{i \in I}$ be a covering of $X$ by open sets. 
+
+    If $\exists x \in A$, some $r > 0$ s.t. $B_r(x) \subset U_i$ for some $i$, choose one such $U_i$, call it $U_{x,r}$. 
+    
+    Let $\mathcal{F^*} = \{ U_{x,r} : x \in A, r > 0 \text{ is retained} \}$
+
+    $\mathcal{F^*}$ countable. 
+    $\mathcal{F^*}$ covers $X$.
+
+    Let $y \in X$. Then $\exists s > 0$ s.t. $B_s(y) \subset U_i$ for some $i$. 
+
+    Choose rational $r$
+
+    $\frac s4 < r < \frac s2$.
+
+    Choose $x \in A$ s.t. $d(x,y) < r$. 
+
+    Then $y \in B_r(x)$. 
+
+    Then $ y \in B_r(x) \subset B_s(y) \subset U_i$. 
+
+    $\implies \exists U_{x,r} \in \mathcal{F^*} $ s.t. $y \in U_{x,r} \text{ by defintiion of } \mathcal{F^*}$. 
+
+    If $\{U_n\}_{n \in \N}$ is a countable open cover of $X$, then $\exists $ a finite subcover. 
+
+    Let $V_n = {U_1 \cup U_2 \dots \cup U_n}$
+
+    WTS $V_n = X$ for large enough $n$. 
+
+    Suppose not. Then $\forall n \exists x_n \in X \backslash V_n$. 
+
+    $X$ is sequentially compact $\therefore (X_n)$ has a convergent subsequence. 
+
+    By relabelling we may assume $x_n \rightarrow x$. $x \in U_n$ for some $N$. $\therefore x_n \in U_n$, $\forall n$ suff large. $\implies $ contradiction because $x_n \in X \backslash V_n$. 
+
+\end{proof}
+
+\end{document}

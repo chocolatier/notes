@@ -1,0 +1,197 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PS}{\mathcal P}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\TO}{\mathcal O}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+
+%
+% The following macro is used to generate the header.
+%
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+\newcommand\R{\mathbb{R}}
+
+
+\begin{document}
+
+    \section{Recap}
+    Definition of a topology on a set $X$. 
+
+    $(X,\mathcal O \subset P(X))$
+
+    E.g. $X = \R$, $\TO = $ set of "open" sets of $\R$ (as a metric space.)
+    E.g. $X $ is any metric space, $\TO = $ any metric open set
+
+    (The standard metric topology in $\R$). 
+
+    \begin{definition}
+        Let $(X, \mathcal O)$ be a topological space. A subset $\mathcal B \subset \mathcal O$ is called a basis for the topology, if every $U \in \TO$ can be expressed as a union of elements of $\mathcal B$. 
+
+        E.g. In $\R$ metric, $\mathcal B = \{\text{all open balls}\}$.
+    \end{definition}
+
+    Side example: $\cap_{n \in \N}(-\frac1n, \frac1n)= {0}$. Infinite intersection don't have to be open. 
+
+    \begin{example}{The Lower Limit Topology}
+
+
+        $X = \R$
+
+        $\mathcal B_{ll} = \{[a,b) \vert a, b \in \R\}$
+
+        $\TO_{ll} = $ set of all possible unions of elements of $\mathcal B_{ll}$
+    \end{example}
+
+    \begin{proposition}
+        Any interval of the form $(a,b)$ is open in $\R_{ll}$. 
+    \end{proposition}
+
+    \begin{proof}
+        $(a,b) = \underset{n\in \N>0}\cup[a+1/n, b)$
+    \end{proof}
+
+    \begin{definition}
+        A set $Y \subset X$ is closed if $(X\backslash Y) \in O$.
+    \end{definition}
+
+
+    $[a,b)$ are both open and closed. 
+
+    $\TO_{metric} \subset \TO_{ll}$, because $B_{metric} \subset B_{ll}$. 
+
+    $\R_{ll}$ has "more" open sets that $\R $ metric. Say that the lower limit topology is finer metric topology. 
+
+    Q) Is $\TO_{metric} = \TO_{ll}$? Is $[a,b)$ open in the metric topology?
+
+    \begin{definition}
+        Let $A \subseteq X$. Let $x \in X$. 
+
+        There is the following trichotomy:
+
+        1) There is some $U \in \TO$ s.t. $x \in U$ and $U \subset A$. -> X is in the interior of $A$, $x \in \text{int} A$. 
+
+        2) There is some $U \in \TO$ s.t. $x \in U$ and $U \subset (X \backslash A)$. $x \in \text{int} (X \backslash A)$. 
+
+        3) For all open sets $U \in O$ s.t. 
+        we have $U \cap A \neq \emptyset$ and $U \cap (X\backslash A) \neq \emptyset$ $x \in U$. X is in the boundary of $A$.
+    \end{definition}
+
+    \begin{example}
+        In $\R$ metric. 
+
+        $A = [a,b)$. $\text{int}(A) = (a,b)$
+
+        $\text{boundary}(A) = \{a, b\}$.
+        
+        $int(X \backslash A) = (-\infty, a) \cup (b, \infty)$. 
+    \end{example}
+
+    \begin{definition}
+        If $A \subset X$, then we say that $x \in X$, is a limit point of $A$, if either $x \in \text{int} A$ or $x \in \text{boundary} A$. 
+        
+        i.e. x is a limit point if $\forall U \subset \TO$, s.t. $x \in U$, $U \cap A \neq \emptyset$
+    \end{definition}
+
+    \begin{definition}
+        The closure of $A$, denoted $\overline A$ is the set of limit points of $A.$
+    \end{definition}
+
+    \begin{proposition}
+        Let $A \subset X$. Then:
+
+        \begin{enumerate}
+            \item int($A$) is open, i.e. int($A$) $\in \TO$.
+
+            \item $\overline A$ is closed. 
+
+            \item A is open iff $A = int(A)$
+
+            \item  A is closed iff $A = \overline A$.
+        \end{enumerate}
+    \end{proposition}
+
+    \subsection{Finite Complement Topology}
+
+    $X = \R$
+
+    $\TO = \{Y \subseteq X \vert X \backslash Y \text{ is finite}\}$ 
+
+    \begin{definition}[Subspace Topology]
+        If $(X, \TO)$ is a topological space, and $Y \subset X$ is any set, then we can define a standard topology on $Y$, called the subspace topology. 
+
+        Define $\TO_y := \{U \cap Y \vert U \in \TO\}$
+    \end{definition}
+
+    \begin{definition}
+        Let $X$ and $Y$ be topological spaces. A function $f: X \rightarrow Y$ is continuous, if for all $\forall V$ open in $Y$, $f^{-1}(V)$ is open in $X$.         
+    \end{definition}
+
+    \begin{definition}
+        $f:X \rightarrow Y$ is called a homeomorphism if it is continuous, one to one, onto and $f^{-1}$ is continuous.
+    \end{definition}
+
+\end{document}

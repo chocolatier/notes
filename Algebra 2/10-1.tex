@@ -1,0 +1,192 @@
+\documentclass[twoside]{article}
+    \setlength{\oddsidemargin}{0.25 in}
+    \setlength{\evensidemargin}{-0.25 in}
+    \setlength{\topmargin}{-0.6 in}
+    \setlength{\textwidth}{6.5 in}
+    \setlength{\textheight}{8.5 in}
+    \setlength{\headsep}{0.75 in}
+    \setlength{\parindent}{0 in}
+    \setlength{\parskip}{0.1 in}
+    
+    %
+    % ADD PACKAGES here:
+    %
+    
+    \usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+    
+    %
+    % The following commands set up the lecnum (lecture number)
+    % counter and make various numbering schemes work relative
+    % to the lecture number.
+    %
+    \newcounter{lecnum}
+    \renewcommand{\thepage}{\thelecnum-\arabic{page}}
+    \renewcommand{\thesection}{\thelecnum.\arabic{section}}
+    \renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+    \renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+    \renewcommand{\thetable}{\thelecnum.\arabic{table}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\PS}{\mathcal P}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\zn}{\zeta_n}
+    
+    
+    
+    %
+    % The following macro is used to generate the header.
+    %
+    
+    %
+    % Convention for citations is authors' initials followed by the year.
+    % For example, to cite a paper by Leighton and Maggs you would type
+    % \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+    % (To avoid bibliography problems, for now we redefine the \cite command.)
+    % Also commands that create a suitable format for the reference list.
+    \renewcommand{\cite}[1]{[#1]}
+    \def\beginrefs{\begin{list}%
+            {[\arabic{equation}]}{\usecounter{equation}
+             \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+             \setlength{\labelwidth}{1.6truecm}}}
+    \def\endrefs{\end{list}}
+    \def\bibentry#1{\item[\hbox{[#1]}]}
+    
+    %Use this command for a figure; it puts a figure in wherever you want it.
+    %usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+    \newcommand{\fig}[3]{
+                \vspace{#2}
+                \begin{center}
+                Figure \thelecnum.#1:~#3
+                \end{center}
+        }
+    % Use these for theorems, lemmas, proofs, etc.
+    \newtheorem{theorem}{Theorem}[lecnum]
+    \newtheorem{lemma}[theorem]{Lemma} 
+    \newtheorem{proposition}[theorem]{Proposition}
+    \newtheorem{claim}[theorem]{Claim}
+    \newtheorem{corollary}[theorem]{Corollary}
+    \newtheorem{definition}[theorem]{Definition}
+    \newtheorem{example}[theorem]{Example}
+    
+    \newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+    
+    % **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+    
+    \newcommand\E{\mathbb{E}}
+    \newcommand\R{\mathbb{R}}
+    
+
+    \usepackage{tikz-cd}
+    
+    \begin{document}
+
+    \section{Cyclotomic Extensions}
+
+    F field, assume $x^n - 1$ is sep. 
+
+    $F(\zeta_n)/F$, $\zeta_n$ is a primitive $n^{th}$ root of unity. 
+
+
+    $\{1,\zn, ..., \zn - 1 \}$
+
+    Roots of $x^n - 1$ and $C_n$, $x^n = 1$. 
+
+    These extensions come up $f(x) = x^n - a, a \in F$.
+
+    $\sqrt[n] a, \zn \sqrt[n]{a}, \dots$
+
+    Q: Number of generators of $C_n$?
+
+    $C_n = <b>$.
+
+    $|b| = n$
+
+    $|b^j| = \frac{n}{(j,n)}$
+  
+    Number of generators of $|(\Z/n\Z)^\times| = \phi(n)$.
+
+    $\phi(p) = p - 1$
+
+    $\phi(p^r) = p^r - p^{r-1}(p-1)$
+
+    $\{1,2, \dots, p^r\}$
+
+    \begin{theorem}
+        $a.b \in \Z$ are coprime, $\Z/ab\Z \rightarrow \Z/a\Z \times \Z/b\Z$. 
+
+        Ex: $\Z/6\Z \rightarrow \Z/2\Z \times \Z/3\Z$
+
+        $a + 6z \rightarrow \alpha + 2\Z, \alpha + 3\Z$.
+
+        Ex: $\Z/4\Z \rightarrow \Z/2\Z \times \Z/2\Z$
+
+        $a + 4z \rightarrow \alpha + 2\Z, \alpha + 2\Z$.
+    \end{theorem}
+
+    By induction, suppose that $n = p_1^{r_1}\dots p_k^{r_k}$.
+
+    $p_1^{r_1}\dots$ distinct primes. 
+
+    $\Z/n\Z = (\Z/p^{r_1}\Z)^{\times} \times \dots \times (\Z/p^{r_k}\Z)^{\times}$
+
+    $\phi(n) = \phi(p_1^{r_1})\dots\phi(p_k^{r_k}) = n\underset{p \vert n}\Pi(1 - \frac1p)$
+
+
+    \section{Study $Gal(F(\zn)/F)$}
+
+    Lemma $\sigma \in Gal(F(\zn)/F)$
+
+    and let $\zeta \in \mu_n(F(\zn)) = \{\zn^k \vert 1 \leq k \leq n\}$ then $\exists a = a_\sigma, (a,n) = 1$ s.t. $\sigma(\zeta) = \zeta^a$
+
+    Rem:
+
+    $Gal(F(\zeta_n)/F) \rightarrow Perm(\{1,\zn, ..., \zn - 1 \})$
+
+    Pf: $\zn$ is primitive, $\zn = 1$, $\zn^j \neq 1$, $1 \leq j \leq n$.
+
+    $\sigma(\zn)$ must be a generator. 
+
+    $\implies \sigma(\zn) = \zn^a$, $(a,n) = 1$ for some $a$.
+
+    $\sigma(\zeta) = \sigma(\zeta^k_n) = \sigma(\zeta_m)^k = (\zeta_n^a)^k = (\zeta_n^k)^a$
+
+    Thm: $Gal(F(\zn)/F) \rightarrow (\Z/n\Z)^\times$
+
+    $\sigma \rightarrow a_\sigma$ an injective homo. 
+
+
+    $\sigma \tau = a_\sigma a_\tau$
+
+    $\zeta^{a_{\tau\sigma}} = (\tau\sigma)(\zeta) = \sigma(\tau(\zeta)) = \sigma(\zeta^{a\tau}) = (\sigma(\zeta))^{a\tau} = (\zeta^{a\sigma})^{a\tau} = \zeta^{a_\sigma, a_\tau}$ 
+
+    $\sigma \in$ kernel : $\sigma(\zeta_n) = \zeta^1_n$
+
+
+    $F(\zn)$ \ \ \  \ $\sigma_{\vert F} = id$
+
+    generated by $F, \zn \implies \sigma = id$. 
+
+    Cor: $Gal(F(\zn)/F)$ abelian. 
+
+    Next: $Gal(\Q(\zn)/\Q) \cong (\Z/n\Z)^\times$.
+    
+    \section{Cyclotomic Polynomials}
+
+    $\Q, x^n - 1$, $\zeta = \zn$ primitive.
+
+    Def $\Phi_n(x) = \underset{1 \leq i \leq n \\ (i,n) = 1}\Pi(x - \zeta^i)$
+
+    $\Phi_2(x) = x -(-1) = x+1$
+
+    $\Phi (x) = (x - \zeta)(x - \zeta^2), \zeta^3 = 1 = x^2 - (\zeta + \zeta^2)x + 1$
+
+    $= x^2 + x+1$
+
+    $\Phi_4(x) = x = (x+i)(x-i) = x^2 + 1$ 
+
+
+
+\end{document}
+
+

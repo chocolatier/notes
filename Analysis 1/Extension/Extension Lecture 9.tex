@@ -1,0 +1,209 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PS}{\mathcal P}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\TO}{\mathcal O}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+
+%
+% The following macro is used to generate the header.
+%
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+\newcommand\R{\mathbb{R}}
+
+
+\begin{document}
+\subsection{Note}
+
+Exercise: Subspace topology
+
+$A \subseteq B \subseteq X$
+
+The subspace topology on $A$ coming from $X$ = the subspace topology on $A$ coming from the subspace topology on $B$ coming from $X$. 
+
+\subsection{Product Topology}
+
+Let $(X, \TO_x)$ and $(Y, \TO_y)$ be topological spaces. Then we give the product topology on the set $X \times Y$ as follows:
+
+The basis $B_{x\times y} = \TO_x \times to_y$ and $\TO_x \times to_y =$ all possible unions of sets in $B_{x \times y}$
+
+\begin{example}
+    $\R^2 = \R \times \R$ w/ product top. 
+
+    $\triangle \subseteq \R^2; \triangle = \{(x,x) \vert x \in \R\}$
+
+    Prop: $(\R^2 \backslash \triangle)$ is open in $\R^2$, but cannot be written as $U \times V$ for $U,V$ open in $\R$
+
+    E.g. Cylinder $\subset \R^3$ is homeomorphic to Annulus $\subset \R^2$ is homeomorphic to $S^1 \times [0,1]$.     
+\end{example}
+
+\begin{definition}
+    Connectedness: Defn: A topological space $X$ is called connected if it cannot be written as a union of two non-empty and disjoint open sets. 
+\end{definition}
+\begin{example}
+    $X = [0,1] \cup (3,4) \subset \R$ is disconnected because $[0,1], (3,4)$ both open and disjoint. 
+\end{example}
+
+\subsection{Equivalent Properties}
+
+\begin{enumerate}
+    \item $X$ is connected iff it cannot be written as the union of two non-empty disjoint closed subsets. 
+
+    If $X$ disconnected, $X = A \cup B$, $A. b \neq \emptyset$, $A \cap B = \emptyset$, $A, B$ $\implies A, B$ are both closed. $A, B$ are clopen.
+    
+    \item $X$ is connected if and only if the only clopen subsets of $X$ are $\emptyset$ and $X$. 
+
+    If $\emptyset \subsetneq A \subsetneq X$ is clopen, then $(X\backslash A)$ is clopen also. $X = A \cup (X \backslash A)$
+
+    \begin{example}
+        $\Q = (\Q \cap (-\infty, \sqrt2)) \cup (\Q \cap (\sqrt2, \infty)) $
+    \end{example}
+\end{enumerate}
+
+\newcommand{\Rm}{\R_{\text{metric}}}
+\newcommand{\ep}{\varepsilon}
+
+Any interval in $\R_{\text{metric}}$ is connected. 
+
+
+\begin{proof}
+    (Proving closed intervals for now)
+
+    Let $X = [a,b]$. If $a = b$, $x = \{a\}$ is connected. 
+
+    Now let $a \neq b$; so $a < b$.
+
+    Suppose $X$ is disconnected. $X = A \cup B$, where $A$ and $B$ are clopen, and $A$ is non-empty. 
+
+    Suppose WLOG that $a \in A$. 
+
+    A is open in $X$, so $A = [a,b] \cap U$, where $U$ open in $\R$. 
+    
+    $a \subset U$, so $\exists \ep > 0$, such that $(a - \ep, a + \ep) \subseteq U$. 
+
+    $(a - \ep, a+\ep) \cap [a,b] \subset A$ = $[a, a+\ep) \subseteq A$. 
+
+    So $[a, \frac\ep2] \subset A$.
+
+    Let $C := \{c \in [a,b] \vert [a,c] \subseteq A\}$
+
+    $C$ has an upper bound, namely $b$. 
+
+    $C$ has a least-upper bound, $L \leq B$
+
+    $L$ is a limit point of $A$. 
+
+    $L \in X$ because $a < L \leq B$.
+
+    A is clopen in $X$, so $A$ is closed in $X$.
+
+    $\implies L \in A$
+
+    $\implies [a,L] \subset A$
+
+    We'd like to show that $L = b$. 
+
+    $L \in A$
+
+    $\implies$ A being open, $\exists \ep > 0$, s.t. $[L, L + \ep) \subseteq A$.
+    
+    $\implies$ $[L, L + \frac\ep2] \subseteq A$. 
+
+    Bad, because it implies that $[a, L + \frac\ep2] \subseteq A$, which is a contradiction. $\implies L = B$. 
+
+    Proof $\implies A = X \implies B$ is empty $\implies$ any closed interval is connected in $\Rm$. 
+\end{proof}
+
+\begin{definition}
+    Connected Component: Let $X$ be a space. 
+
+    $x \in X$. The connected component of $x \in X$ is the union of all connected $Y \subseteq X$ of $X$, s.t. $x \in Y$.
+
+    Remark: The connected component of any $x \in X$ is a connected space. (needs proof)
+
+\end{definition}
+
+\begin{definition}
+    Path Connectedness
+
+    A space $X$ is path connected if $\forall a, b \in X$, there is a continuous function $f: [0,1] \in R_m \rightarrow X$ with $f(0) = a$, $f(1) = b$. 
+\end{definition}
+
+$[0,1]$ is homeomorphic to $[p,q]$ if $p \neq q$
+
+\begin{proposition}
+    If $X$ is path connected, then it is connected. 
+\end{proposition}
+
+\begin{proof}
+    If not then $X = A \cup B$, disjoint union on non-empty clopen sets. 
+
+    Take $a \in A$, $b \in B$. 
+
+    There exists some $f:[0,1] \rightarrow X$, $f(0)=a$, $f(1) = b$. $[0,1] = f^{-1}(A) \cup f^{-1}(B)$ disjoint union, contradiction $[0,1]$ is connected. 
+\end{proof}
+\end{document}

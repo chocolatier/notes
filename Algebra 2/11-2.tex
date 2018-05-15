@@ -1,0 +1,189 @@
+\documentclass[twoside]{article}
+    \setlength{\oddsidemargin}{0.25 in}
+    \setlength{\evensidemargin}{-0.25 in}
+    \setlength{\topmargin}{-0.6 in}
+    \setlength{\textwidth}{6.5 in}
+    \setlength{\textheight}{8.5 in}
+    \setlength{\headsep}{0.75 in}
+    \setlength{\parindent}{0 in}
+    \setlength{\parskip}{0.1 in}
+    
+    %
+    % ADD PACKAGES here:
+    %
+    
+    \usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+    
+    %
+    % The following commands set up the lecnum (lecture number)
+    % counter and make various numbering schemes work relative
+    % to the lecture number.
+    %
+    \newcounter{lecnum}
+    \renewcommand{\thepage}{\thelecnum-\arabic{page}}
+    \renewcommand{\thesection}{\thelecnum.\arabic{section}}
+    \renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+    \renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+    \renewcommand{\thetable}{\thelecnum.\arabic{table}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\PS}{\mathcal P}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\F}{\mathbb{F}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\zn}{\zeta_n}
+    \newcommand{\z}{\zeta}
+    \newcommand{\al}{\alpha}
+    \newcommand{\ra}{\rightarrow}
+    \newcommand{\hra}{\hookrightarrow}
+    
+    
+    
+    %
+    % The following macro is used to generate the header.
+    %
+    
+    %
+    % Convention for citations is authors' initials followed by the year.
+    % For example, to cite a paper by Leighton and Maggs you would type
+    % \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+    % (To avoid bibliography problems, for now we redefine the \cite command.)
+    % Also commands that create a suitable format for the reference list.
+    \renewcommand{\cite}[1]{[#1]}
+    \def\beginrefs{\begin{list}%
+            {[\arabic{equation}]}{\usecounter{equation}
+             \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+             \setlength{\labelwidth}{1.6truecm}}}
+    \def\endrefs{\end{list}}
+    \def\bibentry#1{\item[\hbox{[#1]}]}
+    
+    %Use this command for a figure; it puts a figure in wherever you want it.
+    %usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+    \newcommand{\fig}[3]{
+                \vspace{#2}
+                \begin{center}
+                Figure \thelecnum.#1:~#3
+                \end{center}
+        }
+    % Use these for theorems, lemmas, proofs, etc.
+    \newtheorem{theorem}{Theorem}[lecnum]
+    \newtheorem{lemma}[theorem]{Lemma} 
+    \newtheorem{proposition}[theorem]{Proposition}
+    \newtheorem{claim}[theorem]{Claim}
+    \newtheorem{corollary}[theorem]{Corollary}
+    \newtheorem{definition}[theorem]{Definition}
+    \newtheorem{example}[theorem]{Example}
+    
+    \newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+    
+    % **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+    
+    \newcommand\E{\mathbb{E}}
+    \newcommand\R{\mathbb{R}}
+    
+
+    \usepackage{tikz-cd}
+    \usepackage{amssymb}
+    
+\begin{document}
+
+Def: A finite extension $L/F$ is solvable by radicals if $L \subset $ iterated radical extension. 
+
+
+$F  = F_0 \subset F_1 \subset \dots \subset F_m$
+
+$F_{i+1} = F_i(\sqrt[n_i]{a_i})$
+
+$E = F(\sqrt[n](a), \z_n)$ splitting of $x^n -a$
+
+                $F(\sqrt[n]{a}, \z_n)$
+$F(\sqrt[n]{a})$                      $F(\z_n)$
+                        $F$ 
+
+Know $Gal(F(\z_n)/F) \hookrightarrow (\Z/nZ)^\times$
+
+
+$Gal(\sqrt[n]{a}, F(\z_n)/F) \hookrightarrow (\Z/nZ)$
+because $\sigma(\sqrt[n]a) = \z_n^i \sqrt[n]a$
+
+
+Some $1 \leq i \leq n$. 
+
+$\sigma \mapsto i_\sigma$
+$\tau \mapsto i_\tau$
+
+$\sigma\tau \mapsto i_{\sigma\tau}$
+
+$(\sigma\tau)(\al) = \sigma(\tau(\alpha)) = \sigma(\z_n^{i\tau}\cdot\alpha) = \sigma(\z^{i\tau})\times\sigma(\alpha) = \zeta^{i_\tau}\cdot \zeta^{i_\sigma}\alpha = i_\tau + i_\sigma$
+
+$\Z/n\Z \supset Gal(F(\alpha, \z)/F(\Z)) \hra Gal(F(\alpha,\zeta)/F) \twoheadrightarrow Gal(F(\z_n)/F) \subset (\Z/n\Z)^\times$
+
+\begin{definition}
+    A finite group $G$ is solvable if $\exists$ subgroups of $G_i$ such that ${1} = G_m \subseteq \dots \subseteq G_1 \subseteq G_0 = G$
+    s.t. $G_{i+1} \triangleleft G_i$ and $G_i/G_{i+i}$ and $G_i/G_{i+1}$. 
+\end{definition}
+
+
+\begin{example}
+    Abelian Groups
+
+    $D_{2n}$ dihedral groups. 
+    
+    $\Z/n\Z \subset D_{2n}$, $D_2n/\Z/n\Z \cong \Z/2\Z$        
+
+    ${e} \subset \Z/n\Z \subset D_{2n}$, $D_{2n}/\Z/n\Z \cong \Z/2\Z$
+
+    $D_{10} = <\sigma, \tau>$
+
+    $<\sigma> \cong \Z/5\Z$
+
+    $<\tau> \cong \Z/2\Z$
+
+    $GL_n(F) = $ invertible matrices.
+
+    $G = \{\text{upper triangular matrices}\} <  GL_n(F)$
+
+\end{example}
+
+Fact: $S_n$ is solvable $\iff n < 5$. (Need to prove)
+
+\begin{theorem}
+    Let $N \triangleleft G$. Then $G$ is solvable $\iff G/N$ are solvable. 
+\end{theorem}
+\begin{proof}
+    ($\implies$)
+
+    $G = G_0 \supseteq G_1 \supseteq G_1 \supseteq \dots \supseteq G_m = \{1\}$, $G_i/G_{i+1}$ normal. 
+
+    Need to find $G/N = H_0 \supseteq H_1 \supseteq \dots \supseteq H_? = 1$
+
+    Let $H_i$ image of $G_i$ in $G/N$. 
+
+    \newpage
+        $G \ra G/N$
+        
+        $\vee$ \ \ \ \  \ \  $\vee$
+
+        $G_i \ra G_iN/N = H_i$ 
+
+        $H_{i+1} \triangleleft H_{i}$
+
+        $G_{i+1}N/N \triangleleft G_iN/N$
+
+        $g_inN$
+
+    $G_i \twoheadrightarrow \ \ \ \  \ \ \ H$ 
+
+    $\downarrow$ \ \ \ \ \ \ \ \     $\downarrow$ 
+    
+    $G_i/G_{i+1}$          $\rightarrow[F]$          $H_i/H$
+
+    $\implies H_i/H_{i+1}$ Abelian (quotient of Abelian)
+
+\end{proof}
+
+
+\end{document}
+
+
+

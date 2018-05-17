@@ -1,0 +1,191 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PS}{\mathcal P}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\intr}{\text{int }}
+
+
+%
+% The following macro is used to generate the header.
+%
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+\newcommand\R{\mathbb{R}}
+
+
+\begin{document}
+
+\begin{definition}
+    A metric space $(X,d)$ is connected if there do not exist non-empty open sets $U,V$ such that $U \cap V = \emptyset$ and $X = U \cup V$. 
+
+    $X$ is disconnected if it is not connected. 
+\end{definition}
+
+
+If $A \subset X$ is open, then $A \neq X$, then $A \cup A^c = X$
+
+$A^c$ is not open. 
+
+\begin{proposition}
+    A metric space $X$ is connected, if and only if there do not exist non-empty disjoint closed sets $E,F$ s.t. $X = E \cup F$. 
+\end{proposition}
+
+
+\begin{proof}
+    If $X = U \cup V$, $U, V \neq \emptyset, U \cap V = \emptyset$
+
+    $V = U^c$ closed. 
+
+    $U = V^c$ closed. 
+\end{proof}
+
+\begin{proposition}
+    A metric space $X$ is connected, if and only if the only subsets of $X$ that are both open and closed are $\emptyset, X$. 
+\end{proposition}
+
+\begin{example}
+    $\Q = \Q \cap (-\infty, \pi) \cup \Q \cap (\pi, \infty)$
+
+    $[0,1] \cup sin(\frac1x) \subset \R^2$
+
+    \begin{proof}
+        Suppose $\exists$ open $U, V$, $U \cap V = \emptyset$, $X =( X\cap U) \cup (X\cap V)$
+
+        Two cases:
+
+        If $X_1 \subset U$, then $X_2 \cap U \neq \emptyset$. $X_2 \cap V \neq \emptyset \implies $ red set is disconnected.
+
+        If $X_1 \not\subset U, X_1 \cap U \neq \emptyset$, then $U, V$ disconnect $X_1$. 
+    \end{proof}
+
+\end{example}
+
+\begin{definition}
+    A metric space $(X,d)$ is path connected if $\forall a, b \in X$ there exists a continuous function $f:[0,1]\rightarrow X$ s.t. $f(0) = a, f(1) = b$
+\end{definition}
+
+Connected $\not\implies$ path connected. 
+
+Connectedness in $\R$. 
+\begin{definition}
+    $A$ set $S \subset \R$ is on interval if $a,b \in S,  a < c < b \implies c \in S$
+\end{definition}
+
+\begin{theorem}
+    $S \subset \R$ is connected if and only if it is an interval.
+\end{theorem}
+
+\begin{proof}
+    Suppose $S$ is not an interval. Then $\exists a, b$ Then $\exists a, b \in S$, say $a < b$ and $x$ s.t. $a < x < b$, $x \not \in S$. 
+
+    Then $S = (S \cap (-\infty, x)) \cup (S \cap (x, \infty))$. 
+
+    $\therefore S$ is not connected. 
+
+    Suppose $S$ is an interval. If $S$ is not connected, then $\exists$ open $U,V \subset S, U\cap V = \emptyset$.
+
+    $U,V \neq \emptyset$. 
+
+    Let $a \in U$, $b \in B, a < b$. 
+
+    Let $c = \sup[a,b]\cap U \subset S$.
+    
+    Then $c \in U$ or $c \in V$. 
+
+    If $c \in U$, then $c + \ep \in U$ for small enough $\ep > 0$, because $U$ is open. Contradiction because $c = \sup[a,b] \cap U$.
+
+    So $c \in V$. $V$ is open, so $C - \ep \in V$ for small enough $\ep > 0$. Contradiction of $c$ being supremum. 
+
+    $\therefore$ no such $U,V$ exist. 
+    
+    $\therefore$ S is connected. 
+\end{proof}
+
+
+\begin{theorem}
+    In a metric space, path connected $\implies$ connected. 
+\end{theorem}
+
+\begin{proof}
+    Suppose $X$ is path connected but not connected. 
+
+    Let $a, b \in X$, $f:[0,1] \rightarrow X$ continuous. 
+
+    $f(0) = a$
+
+    $f(1) = b$.
+
+    If $X = U \cup V$ open. 
+
+    $U \cap V = \emptyset$
+
+    $U,V \neq \emptyset$.
+
+    Then $f^{-1}(U), f^{-1}(V)$ give a disconnection of $[0,1]$. Contradiction. 
+    
+    $\therefore X$ is connected. 
+\end{proof}
+\end{document}

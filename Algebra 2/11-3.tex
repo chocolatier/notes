@@ -1,0 +1,250 @@
+\documentclass[twoside]{article}
+    \setlength{\oddsidemargin}{0.25 in}
+    \setlength{\evensidemargin}{-0.25 in}
+    \setlength{\topmargin}{-0.6 in}
+    \setlength{\textwidth}{6.5 in}
+    \setlength{\textheight}{8.5 in}
+    \setlength{\headsep}{0.75 in}
+    \setlength{\parindent}{0 in}
+    \setlength{\parskip}{0.1 in}
+    
+    %
+    % ADD PACKAGES here:
+    %
+    
+    \usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+    
+    %
+    % The following commands set up the lecnum (lecture number)
+    % counter and make various numbering schemes work relative
+    % to the lecture number.
+    %
+    \newcounter{lecnum}
+    \renewcommand{\thepage}{\thelecnum-\arabic{page}}
+    \renewcommand{\thesection}{\thelecnum.\arabic{section}}
+    \renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+    \renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+    \renewcommand{\thetable}{\thelecnum.\arabic{table}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\PS}{\mathcal P}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\F}{\mathbb{F}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\zn}{\zeta_n}
+    \newcommand{\z}{\zeta}
+    \newcommand{\al}{\alpha}
+    \renewcommand{\a}{\alpha}
+    \newcommand{\ra}{\rightarrow}
+    \newcommand{\hra}{\hookrightarrow}
+    \newcommand{\ep}{\varepsilon}   
+    \newcommand{\trr}{\triangleright}   
+    \newcommand{\trl}{\triangleleft}   
+    \newcommand{\thra}{\twoheadrightarrow}   
+    
+    
+    %
+    % The following macro is used to generate the header.
+    %
+    
+    %
+    % Convention for citations is authors' initials followed by the year.
+    % For example, to cite a paper by Leighton and Maggs you would type
+    % \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+    % (To avoid bibliography problems, for now we redefine the \cite command.)
+    % Also commands that create a suitable format for the reference list.
+    \renewcommand{\cite}[1]{[#1]}
+    \def\beginrefs{\begin{list}%
+            {[\arabic{equation}]}{\usecounter{equation}
+             \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+             \setlength{\labelwidth}{1.6truecm}}}
+    \def\endrefs{\end{list}}
+    \def\bibentry#1{\item[\hbox{[#1]}]}
+    
+    %Use this command for a figure; it puts a figure in wherever you want it.
+    %usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+    \newcommand{\fig}[3]{
+                \vspace{#2}
+                \begin{center}
+                Figure \thelecnum.#1:~#3
+                \end{center}
+        }
+    % Use these for theorems, lemmas, proofs, etc.
+    \newtheorem{theorem}{Theorem}[lecnum]
+    \newtheorem{lemma}[theorem]{Lemma} 
+    \newtheorem{proposition}[theorem]{Proposition}
+    \newtheorem{claim}[theorem]{Claim}
+    \newtheorem{corollary}[theorem]{Corollary}
+    \newtheorem{definition}[theorem]{Definition}
+    \newtheorem{example}[theorem]{Example}
+    
+    \newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+    
+    % **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+    
+    \newcommand\E{\mathbb{E}}
+    \newcommand\R{\mathbb{R}}
+    
+
+    \usepackage{tikz-cd}
+    \usepackage{amssymb}
+    
+\begin{document}
+
+\subsection{Preparation for Galois' Solvability Theorem}
+
+Def: $G$ is called solvable if there exists a sequence of subgroups $G = G_0 \triangleright G_1 \triangleright \dots \trr G_m  = \{1\}$.
+
+s.t. $G_i/G_{i+1}$ is abelian. 
+
+\begin{theorem}
+    Let $N \trr G$. $G$ is solvable $\iff N, G/N$ is solvable.  
+\end{theorem}
+
+\begin{proof}
+    $\implies$ 
+    
+    $G/N \checkmark$
+
+    $N_i = G_i \cap N$. 
+
+    $N = N_0 \supset N_1 \supset \dots \supset N_m = 1$.
+
+    $N_{i+1} \trl N_i$? Yes, because $N \cap G_{i+1} \trl G_i$
+
+    $N_i/N_{i+1}$ Abelian? $N \cap G_i \hra G_i \twoheadrightarrow G_i/G_{i+1}$ 
+
+    $f: N \cap G_i \rightarrow G_i/G_{i+1}$. composition of above. 
+
+    Kernel of $f$? $n \rightarrow nG_{i+1}$, $n \in \ker f \iff n \in G_{i+1} \cap N$. 
+
+
+    $N_i/N_{i+1} = N\cap G_i/N\cap G_{i+1} \cong \text{im} f < G_i/G_{i+1}$. 
+
+    $\impliedby$
+
+    Construct a series for $G$. 
+
+    $N = N_0 \trr N_1 \trr \dots \trr N_m = \{1\}$
+
+    $G/N = H_0 \trr H_1 \trr \dots \trr H_m = \{1\}$
+
+    $\{1\}= N_m \trl \dots \trl N_0 = N - G_n < G_{n-1} \dots G < G $
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \    $\{1\} \trl H_n \dots \trl H_0 = G/N$
+
+    $\phi : G \ra G/N$
+    
+    \ \ \ \ $\vee$     \ \ \ \ $\vee$
+
+
+    $\phi^{-1}(H_1) \rightarrow H_i$
+
+
+So $G_{i+1} \trl G_i$ because $H_{i+1} \trl H_i$. 
+
+$G_i/G_{i+1} \cong {G_i/N}/{G_{i+1}/N} = H_i/H_{i+1}$
+
+By 3rd homo. them. 
+
+$\therefore G_i/G_{i+1}$ abelian. 
+
+\end{proof}
+
+\subsection{Cyclic Extensions}. 
+
+\begin{theorem}
+    (Dedekind) Let $F$ be a field, and $G$ a group. Then every finite set $\{\chi_1, \dots, \chi_m\}$ of homomorphisms 
+
+    $G_i : G \rightarrow F^{\times}$ is linearly independent over $F$
+\end{theorem}
+
+Remark: $X$ set, $F$ field. 
+
+$Func (X,F) = \{f : X \rightarrow F\}$ is a vector space over f. 
+
+$(f_1 + f_2)(x) = f_1(x) + f_2(x)$. 
+
+$(\alpha \cdot f)(x) = \a f(x)$.
+
+$\chi_1, \dots, \chi_m \in Func(G,F)$ are linearly independent.
+
+
+\begin{theorem}
+    $\sum_ia_i\chi_i = 0 \implies a_1 = \dots = a_m = 0$.
+\end{theorem}
+
+\begin{proof}
+    $m = 1 \checkmark$.
+
+    $a \chi = 0 \implies a = 0$. 
+
+    Assume $m -1$. 
+
+    $a_1 \chi_1 + a_m \chi_m = 0$. $\star$
+
+    $a_i \in F$ need to show all zero.
+
+    $\chi_1 \neq \chi_2 \implies \exists g \in G$
+
+    $\chi_1(g) \neq \chi_2(g)$
+
+    $\forall x \in G: a_1\chi_1 + \dots + a_m\chi_m = 0$
+
+    also for $gx: a_1\chi_1(gx) + \dots + a_m\chi_m(gx) = 0$
+
+    (*) $a_1\chi_1(x)\chi_1(g) + \dots + a_m\chi_m(x)\chi_m(g) = 0$.
+
+    (**) $a_1\chi_1(x)\chi_1(g) + \dots + a_m\chi_1(x)\chi_m(g) = 0$. By mult above with $\chi_1(x)$
+
+    $(*) - (**) = \sum_{j=2}^m a_j'\chi_j(x) = 0$. $\forall x \in G$. 
+
+
+    $a_j' = a_j(\chi_j(g) - \chi_1(g))$. 
+
+    By induction, $a_j' = 0$. 
+
+    In particular, $a_2' = 0$.
+
+    $0 = a_2' = a_2 (x_2(g) - x_1(g)) \neq 0$
+
+    $\implies a_2 = 0$
+
+    So in $\star$, there are $m-1$ terms, by induction $a_1 = a_3 = \dots = a_m = 0$
+
+\end{proof}
+
+\newpage
+
+\subsection{Back to Cyclic Extensions}
+
+$F = F_0 \subset F_1 \subset \dots F_m$.
+
+$F_{i+1} = F_i(\sqrt[n_i]{a_i})$
+
+\begin{theorem}
+    Let F be a field containing a primitive $n^{th}$ root of 1. Let $E = F[\a], \a^n = a \in F$ and no smaller power of $\a \in F$. Then $E/F$ is Galois ext with $Gal(E/F) \cong \Z/n\Z$.
+
+    Conversely, if $E/F$ is cyclic Galois Ext of degree $n$, then $\exists \alpha \in E$ s.t. $E = F[\a], \a^n \in F$. 
+\end{theorem}
+
+\begin{proof}
+    $(\implies)$
+
+
+    $\alpha, \zeta\alpha, \z^2\a, \dots, \z^n\a$ are the roots of $x^n - a \in F[x]$. 
+
+    $Gal(F[\alpha]/F) \rightarrow \Z/n\Z$
+
+    $\sigma \rightarrow i\sigma$, $\sigma(\alpha) = \z^{i\sigma}\alpha$
+
+    $\impliedby$
+
+    enough to find $\alpha \in E^\times$ s.t. $\sigma(\alpha) = \zeta^{-1}\alpha$
+
+\end{proof}
+
+\end{document}
+
+
+

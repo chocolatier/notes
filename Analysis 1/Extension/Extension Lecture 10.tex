@@ -1,0 +1,238 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PS}{\mathcal P}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\TO}{\mathcal O}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\lub}{\text{lub}}
+\newcommand{\ep}{\varepsilon}
+\renewcommand{\b}{\beta}
+\newcommand{\metric}{\text{metric}}
+\renewcommand{\a}{\alpha}
+
+
+%
+% The following macro is used to generate the header.
+%
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+\newcommand\R{\mathbb{R}}
+
+
+\begin{document}
+
+Last Time: Connectedness and path connectedness. 
+
+\begin{proposition}
+    If $X$ is path-connected, then it is connected. 
+\end{proposition}
+
+\begin{proposition}
+    If $f: X \rightarrow Y$ is continuous and surjective, then 
+
+    If $X$ is connected, so is $Y$.
+
+    If $X$ is path connected, so is $Y$.
+    
+\end{proposition}
+
+\begin{corollary}
+    1) If $f:X\rightarrow Y$ is a homeomorphism, then $X$ is connected if and only if $Y$ is connected. 
+
+    2) $X$ is path connected if and only if $Y$ is path connected. 
+\end{corollary}
+
+\begin{proposition}
+    If $n > 1$, then $\R_\metric$ and $R^n_\metric$ are homeomorphic. 
+\end{proposition}
+
+\begin{proof}
+    If $f: \R \rightarrow \R^n$ were a homeomorphism, then $f: \R\backslash\{0\} \rightarrow \R^n\{f(0)\}$ would still be a homeomorphism.
+    
+    But $\R\backslash\{0\}$ is disconnected as  $\R\backslash\{0\} = (-\infty, 0)\cup(0,\infty)$
+
+    Since $n > 1$, $\R^n\backslash\{f(0)\}$ is connected, because it is path-connected. 
+\end{proof}
+
+\subsection{Compactness}
+
+Look at $\R$, $\Z \subset \R$ is an infinite set of isolated points. 
+
+Open in $\Z$ $\leftarrow \{5\}= \Z\cap (4.5,5.5)$
+
+\begin{definition}
+    An open cover of $X$ is a set $\{U_\alpha\}_{\alpha\in I}$ of open subsets of $X$ such that $X = \underset{\alpha \in I}U_\alpha$
+\end{definition}
+
+Remark: If $Y \subseteq X$, sometimes we specify an open cover of $Y$ by giving a set ${U_\alpha}_{\alpha \in I}$ of open sets of $X$ whose union contains $Y$. 
+
+\begin{definition}
+    Compactness: A space $X$ is compact, if every open cover of $X$ has a finite subcover. That is, a finite subset that also an open cover of $X$. 
+\end{definition}
+
+
+Ex. $\R_\metric$ is not compact.
+
+Take the open cover $\{(n, n+2) \vert n \in \Z\}$. 
+
+Similarly $(0,1)$ is not compact in $\R_\metric$. Take $\{(\frac1{n+2}, \frac1{n})$ for $n \geq 1 \}$
+
+\begin{theorem}
+    Every closed interval $[a,b]$ is compact in the $\R_\metric$.     
+\end{theorem}
+
+\begin{proof}
+    Let $[a,b] \subset \R_metric$. 
+
+    If $a = b$ then $[a,b] = \{a\}$, all finite sets are compact. 
+
+    Suppose $a < b$. 
+
+    Let $\{U_\alpha\}_{\alpha \in I}$ be an open cover of $[a,b]$. $A \in U_{\alpha}$ for $\alpha \in I$
+
+    Since $U_\a$ is open, $\exists c \in \R, c > a$, s.t. $[a,c] \subset U_\alpha$. 
+
+    Let $C = \{x \in (a,b] \vert [a,x]$ is contained in a finite union of the Us$\}$
+
+    $C \neq \emptyset$ b/c $c \in C$. 
+
+    $C$ is bounded above by $b$. 
+
+    Let $L = \lub(C)$
+
+    We'll show 
+    
+    1) $L \in C$
+
+    2) $L = b$
+
+    1) Suppose $L \not\in C$. But $L \in [a,b]$ so $L \in U_\beta$ for some $\beta \in I$. 
+
+    $U_\beta$ is open, so there is some $\ep>0$, s.t. $[L-\ep,L] \subset U_\beta$
+    
+    $L - \ep < L$, but $L = \lub(C)$. 
+    
+    $\implies [a, L-\ep]$ is contained in a finite union of the $Us$. 
+
+    $\implies [a,L]$ is contained in the above union $U_\b$, still finite. 
+    
+    Contradiction  $\implies L \in C$
+
+    $\implies [a,L]$ is covered by finitely many $Us$.
+    
+    2) WTS $L = b$.
+
+    If $L \neq b$, then $\exists \ep > 0$ s.t. $[a, L+\ep]$ is also in a finite union of the $Us$. Contradiction!  
+
+\end{proof}
+
+\begin{proposition}
+    If $Y \subseteq X$ is a closed subspace and $X$ is compact, then $Y$ is also compact. 
+\end{proposition}
+
+\begin{proof}
+    Let $\{U_\alpha\}_{\alpha\in I}$ be an open cover of $Y$. [Where $U_\a$ is open in $X$]. 
+
+    $\{U_\alpha\} \cup (X \backslash Y)$ is an open cover of $X$. This has a finite subcover, so $Y$ has a finite subcover. 
+\end{proof}
+
+\begin{proposition}
+    If $f: X \rightarrow Y$ is continuous and surjective and $X$ is compact, then $Y$ is compact. 
+\end{proposition}
+
+$\implies {\circ} \subset \R^2 $ is compact. 
+
+\begin{theorem}
+    If $X$ and $Y$ are both compact then $X \times Y$ is compact. 
+\end{theorem}
+
+\begin{proof}
+    Let $\{U_\alpha\}_{\a\in I}$ be an open cover of $X \times Y$.     
+
+    If $(x,y) \in X \times Y$ then it's contained in $U_\alpha$. 
+
+    Then there is some $A_{xy}\times B_{x,y}$ containing $(x,y)$, lying in $U_\alpha$.
+
+    Fix $x \in X$, and consider $\{B_{xy} \vert y \in Y\}$. THis is an open cover of $Y$. 
+
+    Take a finite subcover. So $B_{xy},B_{{xy}_1},\dots B_{{xy}_n}$.
+
+    Exists associated $A_{xy},A_{{xy}_1},\dots A_{{xy}_n}$. Set $A := \cap A_{{xy_o}} $
+
+    Let $A_{x1}, \dots, A_{xn}$ be a finite subcover of $X$. 
+
+    $A_{x_i} \times B_{x_iy_j}$ forms a finite subcover of $X \times Y$. 
+
+\end{proof}
+
+
+\begin{theorem}
+    The Heine-Borel Theorem: A subspace of $\R^n$ is compact if and only if is closed and bounded. 
+
+\end{theorem}
+
+
+\end{document}
+

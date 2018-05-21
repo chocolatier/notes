@@ -1,0 +1,168 @@
+\documentclass[twoside]{article}
+    \setlength{\oddsidemargin}{0.25 in}
+    \setlength{\evensidemargin}{-0.25 in}
+    \setlength{\topmargin}{-0.6 in}
+    \setlength{\textwidth}{6.5 in}
+    \setlength{\textheight}{8.5 in}
+    \setlength{\headsep}{0.75 in}
+    \setlength{\parindent}{0 in}
+    \setlength{\parskip}{0.1 in}
+    
+    %
+    % ADD PACKAGES here:
+    %
+    
+    \usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+    
+    %
+    % The following commands set up the lecnum (lecture number)
+    % counter and make various numbering schemes work relative
+    % to the lecture number.
+    %
+    \newcounter{lecnum}
+    \renewcommand{\thepage}{\thelecnum-\arabic{page}}
+    \renewcommand{\thesection}{\thelecnum.\arabic{section}}
+    \renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+    \renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+    \renewcommand{\thetable}{\thelecnum.\arabic{table}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\PS}{\mathcal P}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\F}{\mathbb{F}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\zn}{\zeta_n}
+    \newcommand{\z}{\zeta}
+    \newcommand{\al}{\alpha}
+    \renewcommand{\a}{\alpha}
+    \newcommand{\ra}{\rightarrow}
+    \newcommand{\hra}{\hookrightarrow}
+    \newcommand{\ep}{\varepsilon}   
+    \newcommand{\trr}{\triangleright}   
+    \newcommand{\trl}{\triangleleft}   
+    \newcommand{\thra}{\twoheadrightarrow}   
+    
+    
+    %
+    % The following macro is used to generate the header.
+    %
+    
+    %
+    % Convention for citations is authors' initials followed by the year.
+    % For example, to cite a paper by Leighton and Maggs you would type
+    % \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+    % (To avoid bibliography problems, for now we redefine the \cite command.)
+    % Also commands that create a suitable format for the reference list.
+    \renewcommand{\cite}[1]{[#1]}
+    \def\beginrefs{\begin{list}%
+            {[\arabic{equation}]}{\usecounter{equation}
+             \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+             \setlength{\labelwidth}{1.6truecm}}}
+    \def\endrefs{\end{list}}
+    \def\bibentry#1{\item[\hbox{[#1]}]}
+    
+    %Use this command for a figure; it puts a figure in wherever you want it.
+    %usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+    \newcommand{\fig}[3]{
+                \vspace{#2}
+                \begin{center}
+                Figure \thelecnum.#1:~#3
+                \end{center}
+        }
+    % Use these for theorems, lemmas, proofs, etc.
+    \newtheorem{theorem}{Theorem}[lecnum]
+    \newtheorem{lemma}[theorem]{Lemma} 
+    \newtheorem{proposition}[theorem]{Proposition}
+    \newtheorem{claim}[theorem]{Claim}
+    \newtheorem{corollary}[theorem]{Corollary}
+    \newtheorem{definition}[theorem]{Definition}
+    \newtheorem{example}[theorem]{Example}
+    
+    \newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+    
+    % **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+    
+    \newcommand\E{\mathbb{E}}
+    \newcommand\R{\mathbb{R}}
+    
+
+    \usepackage{tikz-cd}
+    \usepackage{amssymb}
+    
+\begin{document}
+    \begin{theorem}
+        Let F be a field containing a primitive $n^{th}$ root of 1. Let $E = F[\a], \a^n = a \in F$ and no smaller power of $\a \in F$. Then $E/F$ is Galois extension with $Gal(E/F) \cong \Z/n\Z$.
+    
+        Conversely, if $E/F$ is cyclic Galois extension of degree $n$, then $\exists \alpha \in E$ s.t. $E = F[\a], \a^n \in F$. 
+    \end{theorem}
+
+    \begin{proof}
+        ($\impliedby$) $G = Gal(E/F) = <\sigma>$.
+
+        $\mu_n(F) = <\z>$
+
+        Enough to find $\alpha \in E$ s.t. $\sigma(\alpha) = \zeta^{-1}\alpha$. 
+
+        $\sigma(\a^m) = \sigma(\a)^m = \z^{-m}\a^m$
+
+        If $m = n$: $\sigma(\a^n) = \a^n \implies \a^n \in F$.  
+        $m < n, \sigma(\alpha^m) = \z^{-m}\a^m \neq \a^m$
+
+        Consider $\sigma^i : E^\times \rightarrow E^\times$. 
+
+        $\therefore 1, \sigma, \sigma^2, \dots, \sigma^{n-1}$ are linearly independent. 
+
+        $\Sigma_{i=0}^{n-1} \z^i\sigma_i:E^x \rightarrow E$ is non zero.
+
+        $\exists \gamma$ such that $\alpha := \Sigma_{i=0}^{n-1}\z^i\sigma_i(\gamma) \neq 0$.
+
+        What is $\sigma(\alpha)= ?$
+
+        $\sigma(\alpha) = \sigma(\sum_{i=0}^{n-1} \z_i^i\sigma^i\alpha)$
+
+        $= \sigma_{i=0}^{n-1}\z_i\sigma{i+1}(\gamma)$
+
+        $= \zeta^{-1}\sum_{i=0}^{n-1}\zeta^{i+1}\sigma^{i+1}(\gamma) = \zeta^{-1}\alpha$
+    \end{proof}
+
+    \begin{theorem}(Galois Solvability Theorem)
+        Let $F$ be a field of char 0. Then an extension is solvable by radicals if and only if $L$ is a subextension of a Galois extension $E/F$ with a solvable Galois group.
+    \end{theorem}
+
+    \begin{proof}
+        Recall: $F \subset L$, $F \subset E$ Galois, 
+
+                    $\Omega$
+        $E$                             $L$
+                    $E \cap L$
+                        $F$
+
+        $Gal(EL/L) \cong Gal(E/E\cap L) \hra Gal(E/F)$. 
+
+        ($\impliedby$)
+
+        $f\in F[x]$ has a solvable Galois group. 
+
+        $Gal(E/F)$ is solvable, $E$ is the splitting field of $f$ over $F$. 
+
+        $Gal(E \cdot F[\z]/F[\z]) < Gal(E/F)$. (is solvable because it is a subgroup of a solvable groups)
+
+        Take $\zeta$ primitive $n-th$ root of unity, $n = deg(f!)$. 
+
+        $\therefore \exists G = G_0 \trr G_1 \trr G_2 \dots \trr G_m = {1}$. 
+
+        Let $K$ be the splitting field of $f$ over $F[\zeta] (=E\cdot F[\zeta])$
+
+        Let $K_i$ be the fixed field of $G_i$, i.e. $E^{G_i}$.
+        
+        $F \subset F[\zeta] = K_0 \subset K_1 \subset \dots \subset K_m = K$.
+
+        $K_i/K_{i-1}$ is cyclic $\implies$ $K_i = K_{i-1}[\alpha_{i-1}]$
+
+        $\implies $ f is solvable by radicals $E \subset E \cdot F[\zeta] = K$
+    \end{proof}
+
+\end{document}
+
+
+

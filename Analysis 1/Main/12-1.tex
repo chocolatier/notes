@@ -1,0 +1,198 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PS}{\mathcal P}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\intr}{\text{int }}
+
+
+%
+% The following macro is used to generate the header.
+%
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+\newcommand\R{\mathbb{R}}
+
+
+\begin{document}
+\section{Connected Spaces}
+    $X$ is connected if there do not exist disjoint open sets $U, V \neq \emptyset$ s.t. $X = U \cup V$. 
+
+    $X$ is path connected if for all $x,y \in X$ there exists a continuous function $f:[0,1] \rightarrow X$ s.t. $f(0) = x$ and $f(1) = y$. 
+
+    \begin{theorem}
+        Path connected $\implies$ connected, but not vice-versa.  
+    \end{theorem}
+
+    \begin{theorem}
+        Suppose $U$ is an open set in $\R^n$. Then $U$ is connected, if and only if it is path connected. 
+    \end{theorem}
+
+    \begin{proof}
+        Suppose $U$ is connected. 
+
+        WTS $U$ is path connected. 
+
+        Let $U \neq \emptyset$. Let $a \in U$. 
+        
+        $E = \{x\in U \vert \exists\text{a path in $U$ from $a$ to $x$}\}$.
+
+        Claim: $E$ is both open and closed (in $U$). 
+
+        Let $x \in E$. Then $\exists$ a path from $a$ to $x$. 
+
+        $B_r(x) \subset U$. 
+
+        $g(t)  = (1-t)x+tz, t \in [0,1]$. 
+
+        Then $\exists $ a path from $a$ to any $z \in B_r$, by following the path from $a to x$ and the radial path from $x$ to $z$. 
+
+        $\therefore E$ is open. 
+
+        E is closed. 
+
+        Let $(x_n) \subset E$, $x_n \rightarrow x \in U$. WTS $x \in E$. 
+
+        $x \in U \implies \exists r > 0$ s.t. $B_r(x) \subset U$. 
+
+        We can connect every point, so once we are in $B_r(x)$, take radial path. 
+
+        $E$ is both open and closed in $U$.
+
+        $\therefore E = U$ because $U$ is connected and $E \neq \emptyset$
+    \end{proof}
+
+    \begin{theorem}
+        The continuous image of a connected set is connected.
+    \end{theorem}
+
+    \begin{proof}
+        Let $X$ be connected, $f: X \rightarrow Y$ continuous. 
+
+        Suppose $f(X)$ is not connected. 
+
+        Then $\exists$ open sets $U, V \subset Y$ s.t. $U \cap V = \emptyset$ and $U \cap f(X)$, $V \cap f(X)$.
+
+        $U \cup V = Y$. 
+
+        $f^{-1}(U)$ is non-empty, $f^{-1}(V)$ is non-empty.
+        
+        $f^{-1}(U) \cap f^{-1}(V)$. 
+
+        $f^{-1}(U),f^{-1}(V)$ open.
+
+        $f^{-1}(U) \cup f^{-1}(V) = X \implies X$ is not connected.  
+    \end{proof}
+
+    \begin{corollary}
+        If $X$ is connected, $f: X \rightarrow \R$ is continuous. 
+
+        Let $x, y \in X$, $f(x) =a$
+
+        $f(y) = b$. 
+
+        Suppose $a < b$.
+
+        Then for any $c \in (a,b) \exists z \in X$ s.t. $f(z) = c$. 
+    \end{corollary}
+
+    \begin{proof}
+        $f(X)$ is connect, $\therefore$ it is an interval. 
+    \end{proof}
+
+    \section{Inverse Function Theorem}
+
+    Suppose $f: I \rightarrow \R$, $I$ an open interval. 
+
+    $f$ is differentiable at $t_0 \in I$ if $\underset{t\rightarrow t_0}\lim\frac{f(t) - f(t_0)}{t-t_0}$. 
+
+    Equivalently $lim_{n\rightarrow \infty} \frac{f(t_0 + h) - f(t_0)}{h}$ exists. 
+
+    Write $f'(t_0)$ for this limit if it exists.
+    
+    $f'(t_0) = \lim_{h \rightarrow 0}\frac{f(t_0 + h) - f(t_0)}{h}$
+
+    $f'(t_0) = \frac{f(t_0 + h) - f(t_0)}{h} + E(h)$
+
+    Then $\frac{f(t_0 + h) - [f(t_0) + f'(t_0)h]}{h} + E(h) = 0$
+
+    Then $\lim_{h\rightarrow \infty} \frac{f(t_0 + h) - [f(t_0) + f'(t_0)h]}{h} = 0$
+
+    If $f(t_0 + h) - [f(t_0) + f'(t_0)h] = \tilde E(h)$, where $\tilde E(h) \rightarrow 0$ faster than $h$. 
+
+    $\frac{\tilde E(h)}{h}\rightarrow 0$ as $h \rightarrow \infty$. 
+
+    Let $f: U \rightarrow \R$. U open in $\R^n$. 
+
+    Let $x_0 \in U$. $f$ is differentiable at $x_0$ if $\exists$ a linear fcn $L: \R^n \rightarrow \R$ s.t. $f(x_0 + h) - [f(x_0) + Lh] = \tilde E(h)$ where $\tilde E(h) \rightarrow 0$ faster than $|h|$, $|h| \in \R^n$. 
+
+    $e_i = (0,\dots,1,\dots, \dots,0)$
+
+    $\lim_{t \rightarrow 0}\frac{f(x_0+t_0i) - f(x_0))}{t} = \frac{\partial f}{\partial x}(x_0)$. 
+
+    $D_nf(x_0) = \lim_{t \rightarrow 0}\frac{f(x_0+t_v) - f(x_0))}{t}$.
+
+    $L = [\frac{\partial f}{\partial x_1}(x_0), \dots, \frac{\partial f}{\partial x_n}(x_n)]$
+\end{document}

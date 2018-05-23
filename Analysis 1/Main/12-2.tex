@@ -1,0 +1,187 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PS}{\mathcal P}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\intr}{\text{int }}
+
+
+%
+% The following macro is used to generate the header.
+%
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+\newcommand\R{\mathbb{R}}
+
+
+\begin{document}
+
+    \begin{definition}
+        $f: U \subset \R^n \rightarrow \R$, $U$ open is differentiable at $a \in U$ if $\exists$ a linear map $L:\R^n \rightarrow \R$ s.t. $f(a+h) - (f(a) + f(h)) + E(h) = 0$, for $h \in \R^n$, $(h)$ small, $\frac{E(h)}{|h|} \rightarrow 0$ as $h \rightarrow 0$. 
+
+        L is unique if it exists. 
+
+        $L = (\frac{\partial f}{\partial x_1}(a), \dots, \frac{\partial f}{\partial x_n}(a))$
+
+        Equivalently, 
+
+        $\frac{f(a+h) - (f(a) + L h)}{|h|}$.
+
+        If $f: U \subset \R^n \rightarrow \R^m$. 
+
+        $f$ is differentiable if every component is differentiable, 
+
+        $f = (f_1, \dots, f_m)^T$. 
+
+        Equivalently, $f$ is differentiable if $\exists$ a linear map $L:\R^n \rightarrow \R^m$ s.t. $f(a+h) - (f(0) + Lh) + E(h) = 0$, where $\frac{E(h)}{|h|} \rightarrow 0$
+    \end{definition}
+
+
+    \begin{theorem}
+        (Inverse Function Theorem)
+
+        Suppose $f:U\subset \R^n \rightarrow \R^n$. 
+
+        $(i.e. frac{\partial f}{\partial x_1}, \dots, \frac{\partial f}{\partial x_n})$ are continuous in $U$
+    
+        Let $a \in U$, and suppose $df(a): \R^n \rightarrow \R^n$ is invertible. 
+
+        Then $\exists$ open sets containing a and $W$ containing $f(a)$, s.t. $f\vert_V:V\rightarrow W$ is invertible. 
+
+        $f^{-1}: W \rightarrow V$ is also $C^1$ and $d(f^{-1})(y) = [df(f^{-1}(y))]^{-1}$.
+
+        If $f \in C^k(U)$ for some $k \in \N$ then $f^{-1} \in C^k(W)$. 
+
+    \end{theorem}
+
+    \begin{proof}
+        By replacing $f$ by $[df(a)]^{-1} \circ f$, we can assume $df(a) = I$. 
+
+        $d[df(a)^{-1}\circ f](a) = df(a)^{-1} \cdot df(a)=I.$
+
+        Let $x_1, x_2 \in B_r(a) \subset U$
+
+        $f(x_1) - f(x_2) = df(z) \cdot (x_1 -x_2)$ for some $z \in [x_1, x_2]$. 
+
+        $(x_1 - x_2) + (d(f(z) - I)(x_1 - x_2)$
+
+        $\therefore $ for small enough $r$, we have $\frac12|x_1 - x_2| < |f(x_1) - f(x_2)| \leq 2|x_1 - x_2|$, for all $x_1, x_2 \in B_r(0)$.
+
+        $f$ is one to one on $\overline{B_r(a)}$.
+
+        $f\vert_{\overline {B_r(a)}}$ has an inverse $f^{-1}$ defined on $f(\overline {B_r(a)})$.
+
+        $|f^{-1}(y_1) - f^{-1}(y_2)| \leq 2 |y_1 - y_2|$. 
+
+        Next step: Show $f(B_r(a))$ contains an open neighbourhood of $f(a)$. 
+
+        $f$ is one to one on $\overline{B_r(a)}$. 
+
+        $\therefore f(a) \not\in f(\partial B_r(a))$. 
+
+        $f(\partial B_r(a))$ is compact. 
+
+        $\therefore \exists \delta > 0$ such that $|f(x) - f(a)| > \delta \forall x \in \delta B_r(a)$
+
+        Let $W = B_{S/2}(f(a))$.
+        
+        If $y \in W, x \in \partial B_r(a)$. 
+
+        $|f(x) - y| = |f(x) - f(a) + f(a) - y| \geq |f(x) - f(a)| - |f(a) - y| \geq \delta - \frac\delta 2 = \frac{\delta}{2} > |f(a) - y|$. 
+
+        Let $g(x) = |f(x) - y|^2$. 
+
+        $g(x) > g(a)$ for all x $\in B_r(a)$. 
+
+        $\therefore$ g must achieve it's minimum at an interior point. 
+
+        At that point, $\frac{\partial g}{\partial x_i} = 2 \sum_{i=1}^n (f^{i} - y^i)\frac{\partial f^i}{\partial  x_j}$. 
+
+        In matrix form $0 = [\frac{\partial f^i}{\partial  x_j}](f'(x) - y', \dots, f^n(x) - y^n)^T$.
+
+        $\implies f(x) = Y$. 
+
+        This shows for every $y \in W$, $\exists x \in B_r(a)$ s.t. $f(x) = y$.
+
+        Define $V = f^{-1(W)} \cap B_r(a)$. 
+
+        Let $x_1, x_2 \in V$. $y_1 = f(x_1)$, $y_2 = f(x_2) \in W$. 
+
+        $f(x_1) - f(x_2) \subset df(x_2)\times(x_1-x_2) + E(x_1 - x_2)$. Multiply both sides by $[df(x_2)]^{-1}$.
+
+        $[df(x_2)]^{-1} \rightarrow 0 = f^{-1} - f^{-1}(y_2) + [df(x_2)]^{-1}E(x_1 - x_2)$. 
+
+        $df^{-1}(y_2) = [df(f^{-1}(y_2))]^{-1}$. 
+
+        $[df(x_2)]^{-1}$ is bounded. 
+
+        $\frac{E(x_1 - x_2)}{|x_1 - x_2|} \times \frac{|x_1 - x_2|}{|y_1 - y_2|} \rightarrow 0$ as $y_1 \rightarrow y$. 
+
+        $\frac13|x_1 - x_2| \leq |y_1 - y_2| \leq 2|x_1 - x_2|$
+
+        $\implies f^{-1}$ is differentiable at $x_2$. 
+    \end{proof}
+
+\end{document}
